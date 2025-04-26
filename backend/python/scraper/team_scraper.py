@@ -1,5 +1,5 @@
 from mwrogue.esports_client import EsportsClient
-from rich import print
+import json
 import time
 
 site = EsportsClient('lol')
@@ -14,14 +14,11 @@ teams = {
     "Tencent LoL Pro League": [],
 }
 
-print("[blue]Getting Teams")
-
 for league in teams:
-    print("[yellow]Waiting 3 seconds to avoid rate limit")
     time.sleep(3)
 
     for tournament_result_row in site.cargo_client.query(
-            limit="max",
+            limit=500,
             tables="Tournaments=T, TournamentResults=TR",
             fields="T.Name, TR.Event, TR.Team",
             where=f"T.League = '{league}'"
@@ -30,10 +27,8 @@ for league in teams:
                   "AND T.Name NOT LIKE '%Promotion%'",
             join_on="T.Name = TR.Event"
     ):
-        if (tournament_result_row["Team"] in teams[league]):
+        if tournament_result_row["Team"] in teams[league]:
             continue
         teams[league].append(tournament_result_row["Team"])
 
-    print(f"[green]Finished {league}")
-
-print(teams)
+print(json.dumps(teams))

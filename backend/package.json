@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "prisma": {
-    "seed": "node seed_teams.js"
+    "seed": "node seed.js"
   },
   "keywords": [],
   "author": "",

@@ -43,7 +43,7 @@ for league in leagues:
 
         leagues[league][event_name][team_name]["Players"].append(player_tournament_results)
 
-with open("data.json", "w") as json_file:
+with open("player_data.json", "w") as json_file:
     json.dump(leagues, json_file, indent=4)
 
 with open("unique_player_data.json", "w") as json_file:

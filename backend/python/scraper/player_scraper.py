@@ -14,6 +14,8 @@ leagues = {
     "Tencent LoL Pro League": {},
 }
 
+players = []
+
 for league in leagues:
     time.sleep(3)
     for player_tournament_results in site.cargo_client.query(
@@ -27,7 +29,10 @@ for league in leagues:
 
         team_name = player_tournament_results["Team"]
         event_name = player_tournament_results["OverviewPage"]
-        print(event_name)
+        player_name = player_tournament_results["Player"]
+
+        if player_name not in players:
+            players.append(player_name)
         if event_name not in leagues[league]:
             leagues[league][event_name] = {}
 
@@ -40,3 +45,6 @@ for league in leagues:
 
 with open("data.json", "w") as json_file:
     json.dump(leagues, json_file, indent=4)
+
+with open("unique_player_data.json", "w") as json_file:
+    json.dump(players, json_file, indent=4)

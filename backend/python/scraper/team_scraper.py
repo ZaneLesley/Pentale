@@ -31,4 +31,5 @@ for league in leagues:
             continue
         leagues[league].append(tournament_result_row["Team"])
 
-print(json.dumps(leagues))
+with open("team_scraper.json", "w") as json_file:
+    json.dump(leagues, json_file, indent=4)

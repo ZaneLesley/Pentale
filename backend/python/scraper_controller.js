@@ -38,7 +38,7 @@ async function runScraperFile(filename, jsonFiles) {
 }
 
 function readFile(filename) {
-    let filePath = path.join(__dirname, 'scraper', filename);
+    let filePath = path.join(__dirname, '../prisma', filename);
     let file = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(file);
 }

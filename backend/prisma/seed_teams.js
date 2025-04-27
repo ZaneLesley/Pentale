@@ -17,10 +17,11 @@ async function main() {
     try {
         await prisma.team.deleteMany({});
         await prisma.$executeRaw`TRUNCATE TABLE "Team" RESTART IDENTITY CASCADE;`;
-        
-        const teamsByLeague = await runScraperFile('team_scraper.py', ['team_scraper.json']);
 
-        console.log(teamsByLeague);
+        const jsonFile = 'team_scraper.json';
+        
+        const result = await runScraperFile('team_scraper.py', [jsonFile]);
+        const teamsByLeague = result[jsonFile]
 
         for (const [league, teams] of Object.entries(teamsByLeague)) {
             for (const team of teams) {

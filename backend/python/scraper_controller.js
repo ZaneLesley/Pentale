@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const venvPath = path.join(__dirname, 'scraper', 'env', 'bin', 'python');
 
-async function runScraperFile(filename) {
+async function runScraperFile(filename, jsonFiles) {
     return new Promise((resolve, reject) => {
         const scraperPath = path.join(__dirname, 'scraper', filename);
 
@@ -12,29 +12,23 @@ async function runScraperFile(filename) {
         const pythonProcess = spawn(venvPath, [scraperPath]);
 
         pythonProcess.stdout.on('data', (stream) => {
-            console.log('PlayerScraper:  ' + stream.toString());
+            console.log('running...');
         });
 
         pythonProcess.stderr.on('data', (stream) => {
-            console.log('PlayerScraper:  ' + stream.toString());
+            console.log('error:  ' + stream.toString());
         });
 
         pythonProcess.on('close', (code) => {
             if (code !== 0) {
                 reject(new Error('Python script exited with code ${code}'));
             } else {
+                const result = {};
                 try {
-                    let filename = path.join(__dirname, 'scraper', 'unique_player_data.json');
-                    let file = fs.readFileSync(filename, 'utf8');
-                    const playerUniqueData = JSON.parse(file);
-                    filename = path.join(__dirname, 'scraper', 'data.json');
-                    file = fs.readFileSync(filename, 'utf8');
-                    const playerSeasonData = JSON.parse(file);
-                    resolve({
-                        season: playerSeasonData,
-                        player: playerUniqueData
+                    jsonFiles.forEach(file => {
+                        result[file] = readFile(file);
                     });
-
+                    resolve(result);
                 } catch (err) {
                     reject(new Error('Failed to parse JSON from Python output: ' + err.message));
                 }
@@ -43,9 +37,15 @@ async function runScraperFile(filename) {
     });
 }
 
+function readFile(filename) {
+    let filePath = path.join(__dirname, 'scraper', filename);
+    let file = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(file);
+}
+
 
 async function main() {
-    await runScraperFile('player_scraper.py');
+    await runScraperFile('player_scraper.py', ['unique_player_data.json', 'data.json']);
 }
 
 module.exports = {runScraperFile};

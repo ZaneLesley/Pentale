@@ -1,5 +1,5 @@
 const { PrismaClient } = require('../generated/prisma');
-const { runTeamScraper } = require('../python/scraper_controller');
+const { runScraperFile } = require('../python/scraper_controller');
 
 const prisma = new PrismaClient();
 
@@ -18,7 +18,9 @@ async function main() {
         await prisma.team.deleteMany({});
         await prisma.$executeRaw`TRUNCATE TABLE "Team" RESTART IDENTITY CASCADE;`;
         
-        const teamsByLeague = await runTeamScraper();
+        const teamsByLeague = await runScraperFile('team_scraper.py', ['team_scraper.json']);
+
+        console.log(teamsByLeague);
 
         for (const [league, teams] of Object.entries(teamsByLeague)) {
             for (const team of teams) {

@@ -15,7 +15,8 @@ datasource db {
 }
 
 model Team {
-  id     Int    @id @default(autoincrement())
-  name   String
-  league String
+  id           Int    @id @default(autoincrement())
+  name         String
+  league       String
+  abbreviation String
 }

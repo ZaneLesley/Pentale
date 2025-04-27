@@ -3,11 +3,11 @@ const path = require('path');
 
 async function runTeamScraper() {
     return new Promise((resolve, reject) => {
-    const scraperPath = path.join(__dirname, 'scraper', 'team_scraper.py');
+        const scraperPath = path.join(__dirname, 'scraper', 'team_scraper.py');
 
-    const venvPath = path.join(__dirname, 'scraper', 'env', 'bin', 'python');
+        const venvPath = path.join(__dirname, 'scraper', 'env', 'bin', 'python');
 
-    const pythonProcess = spawn(venvPath, [scraperPath]);
+        const pythonProcess = spawn(venvPath, [scraperPath]);
 
         let data = '';
         let errorData = '';
@@ -35,13 +35,4 @@ async function runTeamScraper() {
     });
 }
 
-async function main() {
-    try {
-        const teams = await runTeamScraper();
-        console.log(teams);  // <--- You now have the parsed object here!
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-main();
+module.exports = {runTeamScraper};

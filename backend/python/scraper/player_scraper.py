@@ -20,7 +20,7 @@ for league in leagues:
     time.sleep(3)
     for player_tournament_results in site.cargo_client.query(
             tables="Tournaments=T, TournamentPlayers=TP",
-            fields="T.Name, TP.OverviewPage, TP.Team, TP.Player, TP.Role, TP.Flag, TP.Link",
+            fields="T.Name, TP.OverviewPage, TP.Team, TP.Player, TP.Role, TP.Flag, TP.Link, T.Date",
             where=f"T.League = '{league}'"
                   "AND TP.Role != 'Coach'"
                   "AND T.Name NOT LIKE '%Promotion%'",

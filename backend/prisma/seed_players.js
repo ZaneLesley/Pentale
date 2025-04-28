@@ -54,12 +54,12 @@ async function main() {
                                                 role: entry.Role,
                                                 flag: entry.Flag,
                                                 link: entry.Link,
-                                                event: entry.OverviewPage
+                                                event: entry.OverviewPage,
+                                                date: new Date(entry.Date),
                                             }
                                         });
                                     } catch (e) {
-                                        // Warning done above, not needed right now.
-                                        // console.log(e);
+                                        console.log(e);
                                     }
                                 }
 

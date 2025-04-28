@@ -29,13 +29,14 @@ model Player {
 }
 
 model PlayerPerSplit {
-  id       Int     @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   playerId Int
-  player   Player  @relation(fields: [playerId], references: [id])
+  player   Player    @relation(fields: [playerId], references: [id])
   teamId   Int
-  team     Team    @relation(fields: [teamId], references: [id])
+  team     Team      @relation(fields: [teamId], references: [id])
   role     String
   flag     String
   link     String
   event    String?
+  date     DateTime?
 }

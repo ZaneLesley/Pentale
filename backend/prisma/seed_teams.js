@@ -31,14 +31,33 @@ async function main() {
 
         for (const [league, teams] of Object.entries(teamsByLeague)) {
             for (const team of teams) {
-                await prisma.team.create({
-                    data: {
-                        name: team,
-                        league: league,
-                        abbreviation: abbreviations[league],
-                    },
-                });
-                console.log(`Inserted team ${team} into league ${league}`);
+                try {
+                    await prisma.team.create({
+                        data: {
+                            name: team,
+                            league: league,
+                            abbreviation: abbreviations[league],
+                        },
+                    });
+                } catch (error) {
+                    // Unique Violation Constraint
+                    if (error.code === 'P2002') {
+                        const current = await prisma.team.findUnique({
+                            where: {
+                                name: team
+                            },
+                            select: {
+                                abbreviation: true,
+                            }
+                        });
+                        await prisma.team.update({
+                            where: {name: team},
+                            data: {
+                                abbreviation: `${current.abbreviation};${abbreviations[league]}`,
+                            }
+                        });
+                    }
+                }
             }
         }
 

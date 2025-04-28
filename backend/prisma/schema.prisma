@@ -16,7 +16,7 @@ datasource db {
 
 model Team {
   id             Int              @id @default(autoincrement())
-  name           String
+  name           String           @unique
   league         String
   abbreviation   String
   PlayerPerSplit PlayerPerSplit[]

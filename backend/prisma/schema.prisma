@@ -15,13 +15,27 @@ datasource db {
 }
 
 model Team {
-  id           Int    @id @default(autoincrement())
-  name         String
-  league       String
-  abbreviation String
+  id             Int              @id @default(autoincrement())
+  name           String
+  league         String
+  abbreviation   String
+  PlayerPerSplit PlayerPerSplit[]
 }
 
 model Player {
-  id   Int    @id @default(autoincrement())
-  name String
+  id             Int              @id @default(autoincrement())
+  name           String           @unique
+  PlayerPerSplit PlayerPerSplit[]
+}
+
+model PlayerPerSplit {
+  id       Int     @id @default(autoincrement())
+  playerId Int
+  player   Player  @relation(fields: [playerId], references: [id])
+  teamId   Int
+  team     Team    @relation(fields: [teamId], references: [id])
+  role     String
+  flag     String
+  link     String
+  event    String?
 }

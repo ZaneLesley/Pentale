@@ -7,7 +7,9 @@ site = EsportsClient('lol')
 leagues = {
     "Europe League Championship Series": {},
     "League of Legends Championship Series": {},
+    "LoL EMEA Championship": {},
     "LoL Champions Korea": {},
+    "LoL The Champions": {},
     "League of Legends Championship of The Americas North": {},
     "League of Legends Championship of The Americas South": {},
     "North America League Championship Series": {},

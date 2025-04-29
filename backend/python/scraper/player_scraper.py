@@ -14,6 +14,9 @@ leagues = {
     "League of Legends Championship of The Americas South": {},
     "North America League Championship Series": {},
     "Tencent LoL Pro League": {},
+    "Mid-Season Invitational": {},
+    "Esports World Cup": {},
+    "World Championship": {},
 }
 
 players = []

@@ -13,6 +13,9 @@ const abbreviations = {
     "Tencent LoL Pro League": "LPL",
     "LoL The Champions": "LCK",
     "LoL EMEA Championship": "LEC",
+    "Mid-Season Invitational": "MSI",
+    "Esports World Cup": "EWC",
+    "World Championship": "WCS"
 };
 
 async function main() {

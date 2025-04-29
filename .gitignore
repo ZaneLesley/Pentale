@@ -309,3 +309,13 @@ dist
 .yarn/install-state.gz
 .pnp.*
 /backend/.gitignore
+/backend/prisma/img/player/1Jiang.png
+/backend/prisma/img/player/1ntruder.png
+/backend/prisma/img/player/1onz.png
+/backend/prisma/img/player/1xn.png
+/backend/prisma/img/player/3z.png
+/backend/prisma/img/player/007x.png
+/backend/prisma/img/player/113.png
+/backend/prisma/img/player/228.png
+/backend/prisma/img/player/369.png
+/backend/prisma/img/player/0909.png

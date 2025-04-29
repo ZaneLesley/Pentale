@@ -1,7 +1,8 @@
 const files = {
     teams: 'seed_teams.js',
     players: 'seed_players.js',
-    stats: 'seed_stats.js'
+    stats: 'seed_stats.js',
+    player_images: 'seed_player_image.js',
 };
 
 const file = process.argv[2];

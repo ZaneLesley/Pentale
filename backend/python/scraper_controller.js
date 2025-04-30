@@ -123,10 +123,46 @@ async function runPlayerImageFile(filename) {
     });
 }
 
+async function runTeamImageFile(filename) {
+    return new Promise(async (resolve, reject) => {
+        const scraperPath = path.join(__dirname, 'scraper', filename);
+
+        console.log('Running python file: ' + filename + ' please wait...');
+
+        const data = await prisma.team.findMany({
+            select: {
+                name: true,
+            },
+            orderBy: {
+                name: 'asc'
+            }
+        });
+
+
+        const pythonProcess = spawn(venvPath, [scraperPath, filename, JSON.stringify(data)]);
+
+        pythonProcess.stdout.on('data', (stream) => {
+            console.log(stream.toString());
+        });
+
+        pythonProcess.stderr.on('data', (stream) => {
+            console.error('stderr:', stream.toString());
+        });
+
+        pythonProcess.on('close', (code) => {
+            if (code !== 0) {
+                reject(new Error(`Python script exited with code ${code}`));
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+
 function readFile(filename) {
     let filePath = path.join(__dirname, '../prisma', filename);
     let file = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(file);
 }
 
-module.exports = {runScraperFile, runStatsFile, runPlayerImageFile};
+module.exports = {runScraperFile, runStatsFile, runPlayerImageFile, runTeamImageFile};

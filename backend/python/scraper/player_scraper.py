@@ -28,7 +28,8 @@ for league in leagues:
             fields="T.Name, TP.OverviewPage, TP.Team, TP.Player, TP.Role, TP.Flag, TP.Link, T.Date",
             where=f"T.League = '{league}'"
                   "AND TP.Role != 'Coach'"
-                  "AND T.Name NOT LIKE '%Promotion%'",
+                  "AND T.TournamentLevel='Primary' "
+                  "AND T.IsQualifier='No'",
             join_on="T.OverviewPage=TP.OverviewPage",
     ):
 

@@ -19,14 +19,11 @@ leagues = {
     "World Championship": []
 }
 
-
-
 for league in leagues:
     batch_size = 500
     offset = 0
     while True:
         time.sleep(1.5)
-
         batch = site.cargo_client.query(
             limit=batch_size,
             offset=offset,
@@ -35,9 +32,10 @@ for league in leagues:
             where=f"T.League = '{league}' "
                   "AND T.Name != 'None' "
                   "AND TR.Team IS NOT NULL "
-                  "AND T.Name NOT LIKE '%Promotion%'",
-            join_on="T.Name = TR.Event"
-    )
+                  "AND T.TournamentLevel='Primary' "
+                  "AND T.IsQualifier='No'",
+            join_on="T.Name = TR.Event",
+        )
         if not batch:
             break
 

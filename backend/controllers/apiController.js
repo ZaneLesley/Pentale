@@ -1,0 +1,2 @@
+exports.apiGet = (req, res) => {
+}

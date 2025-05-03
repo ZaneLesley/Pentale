@@ -1,4 +1,9 @@
 const {Router} = require("express")
-const apiRouter = Router();
+const gameRouter = Router();
 
-module.exports = apiRouter;
+// Controllers
+const gameController = require('../controllers/gameController')
+
+gameRouter.get("/", gameController.getRandomPlayer)
+
+module.exports = gameRouter;

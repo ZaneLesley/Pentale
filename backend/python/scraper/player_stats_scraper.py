@@ -9,7 +9,6 @@ site = EsportsClient('lol')
 
 def get_stats():
     batch_size = 500
-    results = []
     filename = sys.argv[1]
 
     with open(filename, "r") as f:
@@ -38,22 +37,22 @@ def get_stats():
             for event in events:
                 offset = 0
                 while True:
-                    time.sleep(1.5)
-                    batch = site.cargo_client.query(
-                        limit=batch_size,
-                        offset=offset,
-                        tables="ScoreboardPlayers=SP, ScoreboardGames=SG",
-                        fields="SP.OverviewPage, SP.Link, SP.Kills, SP.Deaths, SP.Assists, SP.CS, SP.PlayerWin, SP.GameId, "
-                               "SG.Gamelength_Number",
-                        where=f"SP.OverviewPage='{event}' "
-                              f"AND SP.Link='{player}'",
-                        join_on="SP.GameId=SG.GameId",
-                    )
-                    # Reach end of API Lookup
-                    if not batch:
-                        break
-
                     try:
+                        time.sleep(1.5)
+                        batch = site.cargo_client.query(
+                            limit=batch_size,
+                            offset=offset,
+                            tables="ScoreboardPlayers=SP, ScoreboardGames=SG",
+                            fields="SP.OverviewPage, SP.Link, SP.Kills, SP.Deaths, SP.Assists, SP.CS, SP.PlayerWin, SP.GameId, "
+                                   "SG.Gamelength_Number",
+                            where=f"SP.OverviewPage='{event}' "
+                                  f"AND SP.Link='{player}'",
+                            join_on="SP.GameId=SG.GameId",
+                        )
+                        # Reach end of API Lookup
+                        if not batch:
+                            break
+
                         for row in batch:
                             kills = row.get("Kills")
                             deaths = row.get("Deaths")
@@ -71,11 +70,11 @@ def get_stats():
                             else:
                                 results[player]["Loss"] += 1
 
-
                             results[player]["Gamelength Number"] += float(gamelength) if gamelength is not None else 0
+                        offset += batch_size
+
                     except Exception as e:
                         print(f"{e}", flush=True)
-                    offset += batch_size
 
             if not first_entry:
                 f.write(',\n')

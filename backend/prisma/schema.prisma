@@ -20,6 +20,7 @@ model Team {
   league         String
   abbreviation   String
   PlayerPerSplit PlayerPerSplit[]
+  Image          String?
 }
 
 model Player {

@@ -5,7 +5,7 @@ const {PrismaClient} = require('../generated/prisma');
 const prisma = new PrismaClient();
 
 async function main() {
-    // await runTeamImageFile('team_image_scrapper.py');
+    await runTeamImageFile('team_image_scrapper.py');
 
     const data = JSON.parse(fs.readFileSync('team_image.json', 'utf8'));
     try {

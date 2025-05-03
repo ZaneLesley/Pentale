@@ -27,6 +27,7 @@ model Player {
   id             Int              @id @default(autoincrement())
   name           String           @unique
   PlayerPerSplit PlayerPerSplit[]
+  Image          String?
 }
 
 model PlayerPerSplit {

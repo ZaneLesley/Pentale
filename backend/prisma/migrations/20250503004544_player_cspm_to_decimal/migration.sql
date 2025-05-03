@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Player" ALTER COLUMN "cspm" SET DATA TYPE DECIMAL(65,30);

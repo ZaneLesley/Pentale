@@ -27,6 +27,11 @@ model Player {
   id             Int              @id @default(autoincrement())
   name           String           @unique
   PlayerPerSplit PlayerPerSplit[]
+  kills          Int?
+  deaths         Int?
+  assists        Int?
+  cspm           Decimal?         @db.Decimal(10, 1)
+  record         String?
   image          String?
 }
 

@@ -4,6 +4,6 @@ const gameRouter = ApiRouter();
 // Controllers
 const apiController = require('../controllers/apiController')
 
-gameRouter.get("/", apiController.getRandomPlayer)
+gameRouter.get("/", apiController.getRandomPlayerByDate)
 
 module.exports = gameRouter;

@@ -1,7 +1,7 @@
 const {PrismaClient} = require('../generated/prisma');
 const prisma = new PrismaClient();
 
-exports.getRandomPlayer = async (req, res) => {
+exports.getRandomPlayerByDate = async (req, res) => {
     // Get how many entries are in 2024 for playerPerSplits
     try {
         const count = await prisma.player.count({

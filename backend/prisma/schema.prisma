@@ -20,14 +20,14 @@ model Team {
   league         String
   abbreviation   String
   PlayerPerSplit PlayerPerSplit[]
-  Image          String?
+  image          String?
 }
 
 model Player {
   id             Int              @id @default(autoincrement())
   name           String           @unique
   PlayerPerSplit PlayerPerSplit[]
-  Image          String?
+  image          String?
 }
 
 model PlayerPerSplit {

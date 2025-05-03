@@ -13,7 +13,7 @@ async function main() {
             for ([team, fileLocation] of Object.entries(row)) {
                 await prisma.team.update({
                     data: {
-                        Image: fileLocation
+                        image: fileLocation
                     },
                     where: {
                         name: team

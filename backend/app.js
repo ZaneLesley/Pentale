@@ -23,6 +23,9 @@ app.get("/",  (req, res) => {
 const apiRouter = require('../backend/routes/apiRouter');
 app.use("/api", apiRouter);
 
+const gameRouter = require('../backend/routes/gameRouter');
+app.use("/game", gameRouter)
+
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
 })

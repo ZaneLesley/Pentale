@@ -15,13 +15,13 @@ app.use((req, res, next) => {
 const PORT = process.env.PORT || 8080;
 
 app.get("/",  (req, res) => {
-    res.redirect("/game");
+    res.redirect("/api");
 })
 
 
 // Router
-const gameRouter = require('../backend/routes/router');
-app.use("/game", gameRouter);
+const apiRouter = require('../backend/routes/apiRouter');
+app.use("/api", apiRouter);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);

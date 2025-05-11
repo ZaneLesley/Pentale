@@ -319,3 +319,266 @@ dist
 /backend/prisma/img/player/228.png
 /backend/prisma/img/player/369.png
 /backend/prisma/img/player/0909.png
+/backend/generated/prisma/runtime/edge.js
+/backend/generated/prisma/runtime/edge-esm.js
+/backend/generated/prisma/runtime/index-browser.d.ts
+/backend/generated/prisma/runtime/index-browser.js
+/backend/generated/prisma/runtime/library.d.ts
+/backend/generated/prisma/runtime/library.js
+/backend/generated/prisma/runtime/react-native.js
+/backend/generated/prisma/runtime/wasm.js
+/backend/generated/prisma/client.d.ts
+/backend/generated/prisma/client.js
+/backend/generated/prisma/default.d.ts
+/backend/generated/prisma/default.js
+/backend/generated/prisma/edge.d.ts
+/backend/generated/prisma/edge.js
+/backend/generated/prisma/index.d.ts
+/backend/generated/prisma/index.js
+/backend/generated/prisma/index-browser.js
+/backend/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node
+/backend/generated/prisma/schema.prisma
+/backend/generated/prisma/wasm.d.ts
+/backend/generated/prisma/wasm.js
+/backend/prisma/img/team/100 Thieves.png
+/backend/prisma/img/team/against All authority.png
+/backend/prisma/img/team/ahq e-Sports Club Korea.png
+/backend/prisma/img/team/ahq eSports Club.png
+/backend/prisma/img/team/Albus NoX Luna.png
+/backend/prisma/img/team/Alienware Arena.png
+/backend/prisma/img/team/Alliance.png
+/backend/prisma/img/team/Apex Gaming.png
+/backend/prisma/img/team/Ascension Gaming.png
+/backend/prisma/img/team/Astralis.png
+/backend/prisma/img/team/Azubu Blaze.png
+/backend/prisma/img/team/Azubu Frost.png
+/backend/prisma/img/team/Bangkok Titans.png
+/backend/prisma/img/team/bbq Olivers.png
+/backend/prisma/img/team/Beşiktaş Esports.png
+/backend/prisma/img/team/Big Plays Incorporated.png
+/backend/prisma/img/team/Bigfile Miracle.png
+/backend/prisma/img/team/Bilibili Gaming.png
+/backend/prisma/img/team/BNK FEARX.png
+/backend/prisma/img/team/Bombers.png
+/backend/prisma/img/team/BRION.png
+/backend/prisma/img/team/Chunnam Techno University.png
+/backend/prisma/img/team/CJ Entus.png
+/backend/prisma/img/team/CJ Entus Blaze.png
+/backend/prisma/img/team/CJ Entus Frost.png
+/backend/prisma/img/team/Cloud9.png
+/backend/prisma/img/team/Clutch Gaming.png
+/backend/prisma/img/team/compLexity Gaming.png
+/backend/prisma/img/team/Copenhagen Wolves.png
+/backend/prisma/img/team/Counter Logic Gaming.png
+/backend/prisma/img/team/Counter Logic Gaming Europe.png
+/backend/prisma/img/team/DAN Gaming.png
+/backend/prisma/img/team/Dark Passage.png
+/backend/prisma/img/team/DetonatioN FocusMe.png
+/backend/prisma/img/team/Dignitas.png
+/backend/prisma/img/team/Dire Wolves.png
+/backend/prisma/img/team/Disguised.png
+/backend/prisma/img/team/DN Freecs.png
+/backend/prisma/img/team/Dominus Esports.png
+/backend/prisma/img/team/Dplus KIA.png
+/backend/prisma/img/team/DragonBorns.png
+/backend/prisma/img/team/DRX.png
+/backend/prisma/img/team/e-Sports Dragons Pro.png
+/backend/prisma/img/team/Echo Fox.png
+/backend/prisma/img/team/EDward Gaming.png
+/backend/prisma/img/team/EHOME.png
+/backend/prisma/img/team/Elements.png
+/backend/prisma/img/team/EloHell.png
+/backend/prisma/img/team/Enemy.png
+/backend/prisma/img/team/Energy Pacemaker.All.png
+/backend/prisma/img/team/Energy Pacemaker.png
+/backend/prisma/img/team/Epik Gamer.png
+/backend/prisma/img/team/ESC Ever.png
+/backend/prisma/img/team/Estral Esports.png
+/backend/prisma/img/team/Ever8 Winners.png
+/backend/prisma/img/team/Evil Geniuses.EU.png
+/backend/prisma/img/team/EVOS Esports.png
+/backend/prisma/img/team/Excel Esports.png
+/backend/prisma/img/team/FC Schalke 04 Esports.png
+/backend/prisma/img/team/Fenerbahçe Esports.png
+/backend/prisma/img/team/Flash Wolves.png
+/backend/prisma/img/team/Fluxo W7M.png
+/backend/prisma/img/team/FlyQuest.png
+/backend/prisma/img/team/Fnatic.png
+/backend/prisma/img/team/Full Louis.png
+/backend/prisma/img/team/FunPlus Phoenix.png
+/backend/prisma/img/team/FURIA.png
+/backend/prisma/img/team/G2 Esports.png
+/backend/prisma/img/team/G-Rex.png
+/backend/prisma/img/team/GAM Esports.png
+/backend/prisma/img/team/Gambit Esports.png
+/backend/prisma/img/team/Gambit Gaming.png
+/backend/prisma/img/team/Game Talents.png
+/backend/prisma/img/team/GamingGear.eu.png
+/backend/prisma/img/team/Gamtee.png
+/backend/prisma/img/team/Gen.G.png
+/backend/prisma/img/team/Giants Gaming.png
+/backend/prisma/img/team/GIANTX.png
+/backend/prisma/img/team/GJR.png
+/backend/prisma/img/team/Golden Guardians.png
+/backend/prisma/img/team/GSG.png
+/backend/prisma/img/team/H2k-Gaming.png
+/backend/prisma/img/team/Hanwha Life Esports.png
+/backend/prisma/img/team/Hong Kong Attitude.png
+/backend/prisma/img/team/Hong Kong Esports.png
+/backend/prisma/img/team/HWA Gaming.png
+/backend/prisma/img/team/Hyper Youth Gaming.png
+/backend/prisma/img/team/I May.png
+/backend/prisma/img/team/Immortals.png
+/backend/prisma/img/team/Incredible Miracle.png
+/backend/prisma/img/team/Incredible Miracle 1.png
+/backend/prisma/img/team/Incredible Miracle 2.png
+/backend/prisma/img/team/INFINITY.png
+/backend/prisma/img/team/INTZ.png
+/backend/prisma/img/team/Invictus Gaming.png
+/backend/prisma/img/team/Istanbul Wildcats.png
+/backend/prisma/img/team/Isurus.png
+/backend/prisma/img/team/Isurus Estral.png
+/backend/prisma/img/team/J Team.png
+/backend/prisma/img/team/JD Gaming.png
+/backend/prisma/img/team/Jin Air Green Wings.png
+/backend/prisma/img/team/Jin Air Green Wings Falcons.png
+/backend/prisma/img/team/Jin Air Green Wings Stealths.png
+/backend/prisma/img/team/KaBuM! Esports.png
+/backend/prisma/img/team/Kaos Latin Gamers.png
+/backend/prisma/img/team/Karmine Corp.png
+/backend/prisma/img/team/Kingzone DragonX.png
+/backend/prisma/img/team/Kongdoo Monster.png
+/backend/prisma/img/team/KSV eSports.png
+/backend/prisma/img/team/KT Rolster.png
+/backend/prisma/img/team/KT Rolster Arrows.png
+/backend/prisma/img/team/KT Rolster Bullets.png
+/backend/prisma/img/team/Lemondogs.png
+/backend/prisma/img/team/Leviatan.png
+/backend/prisma/img/team/LGD Gaming.png
+/backend/prisma/img/team/Liiv SANDBOX.png
+/backend/prisma/img/team/Little Hippo.png
+/backend/prisma/img/team/LMQ.png
+/backend/prisma/img/team/LNG Esports.png
+/backend/prisma/img/team/Longzhu Gaming.png
+/backend/prisma/img/team/LOUD.png
+/backend/prisma/img/team/Machi Esports.png
+/backend/prisma/img/team/MAD Lions KOI.png
+/backend/prisma/img/team/Masters 3.png
+/backend/prisma/img/team/MeetYourMakers.png
+/backend/prisma/img/team/MEGA.png
+/backend/prisma/img/team/Midas FIO.png
+/backend/prisma/img/team/Millenium.png
+/backend/prisma/img/team/Mineski.png
+/backend/prisma/img/team/Misfits Gaming.png
+/backend/prisma/img/team/MKZ.png
+/backend/prisma/img/team/Movistar KOI.png
+/backend/prisma/img/team/Movistar R7.png
+/backend/prisma/img/team/MVP.png
+/backend/prisma/img/team/MVP Blue.png
+/backend/prisma/img/team/MVP Ozone.png
+/backend/prisma/img/team/Mysterious Monkeys.png
+/backend/prisma/img/team/NaJin Black Sword.png
+/backend/prisma/img/team/NaJin e-mFire.png
+/backend/prisma/img/team/NaJin White Shield.png
+/backend/prisma/img/team/Natus Vincere.png
+/backend/prisma/img/team/NeL.png
+/backend/prisma/img/team/Newbee.png
+/backend/prisma/img/team/Ninjas in Pyjamas.png
+/backend/prisma/img/team/Nongshim RedForce.png
+/backend/prisma/img/team/Oh My God.png
+/backend/prisma/img/team/OKSavingsBank BRION.png
+/backend/prisma/img/team/OpTic Gaming.png
+/backend/prisma/img/team/ORDER.png
+/backend/prisma/img/team/Origen.png
+/backend/prisma/img/team/paiN Gaming.png
+/backend/prisma/img/team/PENTAGRAM.png
+/backend/prisma/img/team/Pentanet.GG.png
+/backend/prisma/img/team/Phoenix1.png
+/backend/prisma/img/team/Phong Vũ Buffalo.png
+/backend/prisma/img/team/Positive Energy.png
+/backend/prisma/img/team/Prime Optimus.png
+/backend/prisma/img/team/QG Reapers.png
+/backend/prisma/img/team/Qiao Gu Reapers.png
+/backend/prisma/img/team/Raise Gaming.png
+/backend/prisma/img/team/Rampage.png
+/backend/prisma/img/team/Rare Atom.png
+/backend/prisma/img/team/Rebels Anarchy.png
+/backend/prisma/img/team/RED Canids.png
+/backend/prisma/img/team/Renegades.png
+/backend/prisma/img/team/Rogue Warriors.png
+/backend/prisma/img/team/ROX Tigers.png
+/backend/prisma/img/team/Royal Club.png
+/backend/prisma/img/team/Royal Never Give Up.png
+/backend/prisma/img/team/Saigon Buffalo.png
+/backend/prisma/img/team/Saigon Fantastic Five.png
+/backend/prisma/img/team/Saigon Jokers.png
+/backend/prisma/img/team/Saint Gaming.png
+/backend/prisma/img/team/Samsung Blue.png
+/backend/prisma/img/team/Samsung Galaxy.png
+/backend/prisma/img/team/Samsung White.png
+/backend/prisma/img/team/SeolHaeOne Prince.png
+/backend/prisma/img/team/Shopify Rebellion.png
+/backend/prisma/img/team/SinoDragon Gaming.png
+/backend/prisma/img/team/SK Gaming.png
+/backend/prisma/img/team/SK Telecom T1.png
+/backend/prisma/img/team/SK Telecom T1 K.png
+/backend/prisma/img/team/SK Telecom T1 S.png
+/backend/prisma/img/team/Snake Esports.png
+/backend/prisma/img/team/Splyce.png
+/backend/prisma/img/team/StarTale.png
+/backend/prisma/img/team/Suning.png
+/backend/prisma/img/team/SUPA HOT CREW.png
+/backend/prisma/img/team/SuperStar.png
+/backend/prisma/img/team/T1.png
+/backend/prisma/img/team/Taipei Assassins.png
+/backend/prisma/img/team/Taipei Snipers.png
+/backend/prisma/img/team/Team Acer Poland.png
+/backend/prisma/img/team/Team Aze.png
+/backend/prisma/img/team/Team BDS.png
+/backend/prisma/img/team/Team Coast.png
+/backend/prisma/img/team/Team Curse.png
+/backend/prisma/img/team/Team Curse Europe.png
+/backend/prisma/img/team/Team Dark.png
+/backend/prisma/img/team/Team Dragon Knights.png
+/backend/prisma/img/team/Team Dynamics.png
+/backend/prisma/img/team/Team EnVyUs.png
+/backend/prisma/img/team/Team gamed!de.png
+/backend/prisma/img/team/Team Heretics.png
+/backend/prisma/img/team/Team Hunters.png
+/backend/prisma/img/team/Team Impulse.png
+/backend/prisma/img/team/Team King.png
+/backend/prisma/img/team/Team Liquid.png
+/backend/prisma/img/team/Team Livemore.png
+/backend/prisma/img/team/Team MRN.png
+/backend/prisma/img/team/Team NB.png
+/backend/prisma/img/team/Team OP.png
+/backend/prisma/img/team/Team ROCCAT.png
+/backend/prisma/img/team/Team Vitality.png
+/backend/prisma/img/team/Team Vulcun.png
+/backend/prisma/img/team/Team WE.png
+/backend/prisma/img/team/Team WE Academy.png
+/backend/prisma/img/team/Team 8.png
+/backend/prisma/img/team/ThunderTalk Gaming.png
+/backend/prisma/img/team/Top Esports.png
+/backend/prisma/img/team/TSM.png
+/backend/prisma/img/team/Ultra Prime.png
+/backend/prisma/img/team/Unicorns of Love.CIS.png
+/backend/prisma/img/team/Unicorns of Love.png
+/backend/prisma/img/team/Unlimited Potential.png
+/backend/prisma/img/team/Vega Squadron.png
+/backend/prisma/img/team/Velocity eSports.png
+/backend/prisma/img/team/Vici Gaming.png
+/backend/prisma/img/team/Victory Five.png
+/backend/prisma/img/team/Virtus.pro.png
+/backend/prisma/img/team/Vivo Keyd Stars.png
+/backend/prisma/img/team/Wayi Spider.png
+/backend/prisma/img/team/Wayi Spider China.png
+/backend/prisma/img/team/Weibo Gaming.png
+/backend/prisma/img/team/Wings of Aurora.png
+/backend/prisma/img/team/Winterfox.png
+/backend/prisma/img/team/Xan.png
+/backend/prisma/img/team/XDG Gaming.png
+/backend/prisma/img/team/Xenics Blast.png
+/backend/prisma/img/team/Xenics Storm.png
+/backend/prisma/img/team/Young Glory.png
+/backend/prisma/img/team/ZONE eSports.png

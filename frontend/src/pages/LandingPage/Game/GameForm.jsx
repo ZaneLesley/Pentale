@@ -1,24 +1,38 @@
 import {Form} from "react-router-dom";
+import {useState} from "react";
 
-export default function GameForm() {
+export default function GameForm({onPlayerFound}) {
+    const [username, setUsername] = useState('');
+
     async function handleSubmit(e) {
         e.preventDefault();
         const username = e.target.username.value;
-
-        const res = await fetch('http://localhost:8080/api/player', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({username})
-        })
-        const data = await res.json()
-        console.log(data)
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/player/`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({username})
+            });
+            const data = await res.json();
+            onPlayerFound(data);
+            setUsername('');
+            e.target.reset();
+        } catch (err) {
+            console.log(err);
+            onPlayerFound(null);
+            setUsername('');
+        }
     }
+
     return (
         <Form onSubmit={handleSubmit}>
             <label>Player Username:
-                <input type="text" name="username"/>
+                <input type="text"
+                       name="username"
+                       value={username}
+                       onChange={e => setUsername(e.target.value)}/>
             </label>
-            <input type="submit" value="Submit" />
+            <button type="submit">Search</button>
         </Form>
-    )
+    );
 }

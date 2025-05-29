@@ -1,7 +1,15 @@
-import GameFrom from './GameForm'
+import GameForm from './GameForm';
+
+import {useState} from 'react';
 
 export default function Game() {
+    const [playerData, setPlayerData] = useState(null);
+
+    console.log(playerData)
     return (
-        <GameFrom></GameFrom>
-    )
+        <>
+            <h1>Pentale</h1>
+            <GameForm onPlayerFound={setPlayerData}></GameForm>
+        </>
+    );
 }

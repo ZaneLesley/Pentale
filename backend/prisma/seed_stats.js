@@ -4,7 +4,7 @@ const {PrismaClient} = require('../generated/prisma')
 
 const prisma = new PrismaClient();
 async function main(){
-    //await runStatsFile();
+    await runStatsFile();
 
     const data = JSON.parse(fs.readFileSync('temp_player_stats.json', 'utf8'));
 

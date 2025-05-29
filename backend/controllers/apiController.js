@@ -9,3 +9,22 @@ exports.getRandomPlayerByDate = async (req, res) => {
         res.status(500).json({error: `${error}`});
     }
 };
+
+exports.getPlayerData = async (req, res) => {
+    try {
+        const {username} = req.body;
+
+        if (!username) {
+            return res.status(400).json({error: "Username is required"});
+        }
+
+        const player = await playerService.getPlayerData(username)
+        if (!player) {
+            return res.status(404).json({error: "Player not found"})
+        }
+        return res.json(player);
+
+    } catch (e) {
+        res.status(500).json({error: `${e}`});
+    }
+};

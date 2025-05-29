@@ -33,3 +33,14 @@ exports.getRandomPlayerByDate = async () => {
         console.log(error);
     }
 };
+
+exports.getPlayerData = async (username) => {
+    return prisma.player.findFirst({
+        where: {
+            name: {
+                equals: username,
+                mode: "insensitive"
+            }
+        }
+    });
+};

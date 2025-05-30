@@ -7,7 +7,10 @@ export default ({ mode }) => {
 
   return defineConfig({
     plugins: [react()],
-    base: env.VITE_ROOT_URL || '/'
+    base: env.VITE_ROOT_URL || '/',
+    build: {
+      sourcemap: true,
+    }
   })
 }
 

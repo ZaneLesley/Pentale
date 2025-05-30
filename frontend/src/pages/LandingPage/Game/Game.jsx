@@ -16,8 +16,6 @@ export default function Game() {
         loadPlayer();
     }, []);
 
-    console.log(correctGuess)
-
     return (
         <>
             <h1>Pentale</h1>

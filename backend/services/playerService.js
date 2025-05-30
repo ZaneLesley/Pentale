@@ -1,6 +1,7 @@
 const {PrismaClient} = require("../generated/prisma");
-
 const prisma = new PrismaClient();
+const path = require("path");
+
 
 exports.getRandomPlayerByDate = async () => {
     try {
@@ -44,3 +45,7 @@ exports.getPlayerData = async (username) => {
         }
     });
 };
+
+exports.getPlayerImagePath = (imagePath) => {
+    return path.join(__dirname, '../prisma', imagePath)
+}

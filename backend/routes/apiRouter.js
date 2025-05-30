@@ -9,5 +9,7 @@ apiRouter.get("/", apiController.getRandomPlayerByDate)
 
 // POSTS
 apiRouter.post("/player", apiController.getPlayerData)
+apiRouter.post("/player/image", apiController.getPlayerImage)
+
 
 module.exports = apiRouter;

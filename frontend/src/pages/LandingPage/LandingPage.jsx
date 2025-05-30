@@ -2,7 +2,7 @@ import Game from './Game/Game.jsx'
 
 function LandingPage() {
     return (
-        <Game>stuff</Game>
+        <Game></Game>
     );
 }
 

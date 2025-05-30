@@ -13,7 +13,22 @@ export async function fetchPlayerData(username) {
 
         return await res.json();
     } catch (err) {
-        console.error('Network Error: ', err)
+        console.error('Network Error: ', err);
         return null;
     }
+}
+
+export async function fetchPlayerImage(imagePath) {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/player/image`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({imagePath})
+    });
+
+    if (!res.ok) {
+        console.error(`Error: ${res.status}: ${res.statusText}`);
+    }
+
+    const blob = await res.blob();
+    return URL.createObjectURL(blob)
 }

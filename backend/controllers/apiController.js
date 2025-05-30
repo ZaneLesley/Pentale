@@ -28,3 +28,19 @@ exports.getPlayerData = async (req, res) => {
         res.status(500).json({error: `${e}`});
     }
 };
+
+exports.getPlayerImage = async (req, res) => {
+    try {
+        const {imagePath} = req.body
+
+        if (!imagePath) {
+            return res.status(400).json({error: "Image path is required"});
+        }
+
+        const file = playerService.getPlayerImagePath(imagePath)
+        res.sendFile(file);
+
+    } catch (err) {
+        res.status(500).json({error: `${err}`});
+    }
+}

@@ -32,3 +32,22 @@ export async function fetchPlayerImage(imagePath) {
     const blob = await res.blob();
     return URL.createObjectURL(blob)
 }
+
+export async function fetchRandomPlayer(year = null) {
+    try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/player/random`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({year})
+        })
+
+        if (!res.ok) {
+            console.error(`Error: ${res.status}: ${res.statusText}`);
+            return null;
+        }
+
+        return await res.json()
+    } catch  (err) {
+        console.error('Network Error: ', err);
+    }
+}

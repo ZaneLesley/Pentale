@@ -3,14 +3,14 @@ const prisma = new PrismaClient();
 const path = require("path");
 
 
-exports.getRandomPlayerByDate = async () => {
+exports.getRandomPlayerByDate = async (date = '2011') => {
     try {
         const count = await prisma.player.count({
             where: {
                 PlayerPerSplit: {
                     some: {
                         date: {
-                            gte: new Date('2025-01-01'),
+                            gte: new Date(`${date}-01-01`),
                         }
                     }
                 }
@@ -24,7 +24,7 @@ exports.getRandomPlayerByDate = async () => {
                 PlayerPerSplit: {
                     some: {
                         date: {
-                            gte: new Date('2025-01-01'),
+                            gte: new Date(`${date}-01-01`),
                         }
                     }
                 }

@@ -1,11 +1,23 @@
 import GameForm from './GameForm';
-import PlayerCard from './PlayerCard'
+import PlayerCard from './PlayerCard';
 
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {fetchRandomPlayer} from "../../../api/player";
 
 export default function Game() {
     const [players, setPlayers] = useState([]);
-    
+    const [correctGuess, setCorrectGuess] = useState(null);
+
+    useEffect(() => {
+        async function loadPlayer() {
+            const player = await fetchRandomPlayer()
+            setCorrectGuess(player);
+        }
+        loadPlayer();
+    }, []);
+
+    console.log(correctGuess)
+
     return (
         <>
             <h1>Pentale</h1>
@@ -15,7 +27,7 @@ export default function Game() {
                 }}
             />
             {players.map((player, i) => (
-                <PlayerCard key={i} playerData={player} />
+                <PlayerCard key={i} playerData={player}/>
             ))}
         </>
     );

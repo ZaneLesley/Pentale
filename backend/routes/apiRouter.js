@@ -5,11 +5,11 @@ const apiRouter = Router();
 const apiController = require('../controllers/apiController')
 
 // GETS
-apiRouter.get("/", apiController.getRandomPlayerByDate)
 
 // POSTS
 apiRouter.post("/player", apiController.getPlayerData)
 apiRouter.post("/player/image", apiController.getPlayerImage)
+apiRouter.post("/player/random", apiController.getRandomPlayerByDate)
 
 
 module.exports = apiRouter;

@@ -33,7 +33,7 @@ export async function fetchPlayerImage(imagePath) {
     return URL.createObjectURL(blob)
 }
 
-export async function fetchRandomPlayer(year = null) {
+export async function fetchRandomPlayer(year = '2024') {
     try {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/player/random`, {
             method: 'POST',

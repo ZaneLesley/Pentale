@@ -10,16 +10,17 @@ export default function Game() {
 
     useEffect(() => {
         async function loadPlayer() {
-            const player = await fetchRandomPlayer()
+            const player = await fetchRandomPlayer();
             setCorrectGuess(player);
         }
+
         loadPlayer();
     }, []);
 
     useEffect(() => {
         if (players.length === 0 || !correctGuess) return;
-        analyzePlayerGuess(players[players.length - 1], correctGuess[0])
-    }, [players, correctGuess])
+        analyzePlayerGuess(players[players.length - 1], correctGuess[0]);
+    }, [players, correctGuess]);
     return (
         <>
             <h1>Pentale</h1>
@@ -35,9 +36,40 @@ export default function Game() {
     );
 }
 
-function analyzePlayerGuess(player, guess) {
-    console.log(player, guess);
-    if (player.id === guess.id) {
-        console.log("You Win!")
+function analyzePlayerGuess(player, correctPlayer) {
+    console.log(player, correctPlayer);
+    if (player.id === correctPlayer.id) {
+        console.log("You Win!");
+        return;
     }
+
+    const [playerWins, playerLosses] = player.record.split("-").map(s => parseInt(s.trim(), 10));
+    const [correctPlayerWins, correctPlayerLosses] = correctPlayer.record.split("-").map(s => parseInt(s.trim(), 10));
+
+    const playerStats = {
+        ...player,
+        wins: playerWins,
+        losses: playerLosses
+    };
+
+    const correctStats = {
+        ...correctPlayer,
+        wins: correctPlayerWins,
+        losses: correctPlayerLosses
+    };
+
+    const comparisons = [
+        {key: "kills", label: "kills"},
+        {key: "deaths", label: "deaths"},
+        {key: "assists", label: "assists"},
+        {key: "cspm", label: "cspm"},
+        {key: "wins", label: "wins"},
+        {key: "losses", label: "losses"}
+    ];
+
+    comparisons.forEach(({key, label}) => {
+        if (playerStats[key] > correctStats[key]) {
+            console.log(`Guess has less ${label}`);
+        }
+    });
 }

@@ -16,6 +16,10 @@ export default function Game() {
         loadPlayer();
     }, []);
 
+    useEffect(() => {
+        if (players.length === 0 || !correctGuess) return;
+        analyzePlayerGuess(players[players.length - 1], correctGuess[0])
+    }, [players, correctGuess])
     return (
         <>
             <h1>Pentale</h1>
@@ -29,4 +33,11 @@ export default function Game() {
             ))}
         </>
     );
+}
+
+function analyzePlayerGuess(player, guess) {
+    console.log(player, guess);
+    if (player.id === guess.id) {
+        console.log("You Win!")
+    }
 }

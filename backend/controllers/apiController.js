@@ -4,7 +4,7 @@ const suggestionService = require("./apiController");
 exports.getRandomPlayerByDate = async (req, res) => {
     try {
         const {year} = req.body;
-        const randomPlayer = await playerService.getRandomPlayerByDate(year);
+        const randomPlayer = await playerService.fetchRandomPlayerByDate(year);
 
         if (!randomPlayer) {
             return res.status(400).json({error: res.statusText});
@@ -24,7 +24,7 @@ exports.getPlayerData = async (req, res) => {
             return res.status(400).json({error: "Username is required"});
         }
 
-        const player = await playerService.getPlayerData(username)
+        const player = await playerService.fetchPlayerData(username)
         if (!player) {
             return res.status(404).json({error: "Player not found"})
         }
@@ -43,7 +43,7 @@ exports.getPlayerImage = async (req, res) => {
             return res.status(400).json({error: "Image path is required"});
         }
 
-        const file = playerService.getPlayerImagePath(imagePath)
+        const file = playerService.fetchPlayerImagePath(imagePath)
         res.sendFile(file);
 
     } catch (err) {
@@ -59,7 +59,7 @@ exports.getSuggestions = async (req, res) => {
             return res.status(400).json({error: "Username is required"});
         }
 
-        const suggestions = await playerService.getSuggestions(username);
+        const suggestions = await playerService.fetchSuggestions(username);
         return res.json(suggestions);
     } catch (err) {
         res.status(500).json({error: `${err}`});

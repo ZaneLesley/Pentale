@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 const path = require("path");
 
 
-exports.getRandomPlayerByDate = async (date = '2011') => {
+exports.fetchRandomPlayerByDate = async (date = '2024') => {
     try {
         const count = await prisma.player.count({
             where: {
@@ -35,7 +35,7 @@ exports.getRandomPlayerByDate = async (date = '2011') => {
     }
 };
 
-exports.getPlayerData = async (username) => {
+exports.fetchPlayerData = async (username) => {
     return prisma.player.findFirst({
         where: {
             name: {
@@ -46,11 +46,11 @@ exports.getPlayerData = async (username) => {
     });
 };
 
-exports.getPlayerImagePath = (imagePath) => {
+exports.fetchPlayerImagePath = (imagePath) => {
     return path.join(__dirname, '../prisma', imagePath)
 }
 
-exports.getSuggestions = async (username) => {
+exports.fetchSuggestions = async (username) => {
     try {
         return await prisma.player.findMany({
             where: {

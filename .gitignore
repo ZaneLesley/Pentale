@@ -309,6 +309,7 @@ dist
 .pnp.*
 
 # Custom gitignores
+/backend/prisma/img/
 /backend/prisma/img/team/*.png
 /backend/prisma/img/player/*.png
 /backend/generated/prisma

@@ -5,8 +5,7 @@ import {useState} from 'react';
 
 export default function Game() {
     const [players, setPlayers] = useState([]);
-
-    console.log(players)
+    
     return (
         <>
             <h1>Pentale</h1>

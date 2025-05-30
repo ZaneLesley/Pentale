@@ -1,19 +1,20 @@
 import {Form} from "react-router-dom";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
-import {fetchPlayerData} from "../../../api/player";
+import { Autocomplete, TextField } from '@mui/material';
+
+import {fetchPlayerData, fetchSuggestions} from "../../../api/player";
 
 export default function GameForm({onPlayerFound}) {
     const [username, setUsername] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const username = e.target.username.value;
-
         const data = await fetchPlayerData(username);
 
         if (!data) {
-            setUsername('')
+            setUsername('');
             return;
         }
 
@@ -21,15 +22,43 @@ export default function GameForm({onPlayerFound}) {
         setUsername('');
     }
 
+    useEffect(() => {
+        const delay = setTimeout(async () => {
+            if (username.length >= 2) {
+                try {
+                    const data = await fetchSuggestions(username);
+                    setSuggestions(data || []);
+                } catch (err) {
+                    console.error('Suggestion fetch failed:', err);
+                    setSuggestions([]);
+                }
+            // Resets if empty
+            } else {
+                setSuggestions([]);
+            }
+        }, 300);
+
+        return () => clearTimeout(delay);
+    }, [username]);
+
+
     return (
         <Form onSubmit={handleSubmit}>
-            <label>Player Username:
-                <input type="text"
-                       name="username"
-                       value={username}
-                       onChange={e => setUsername(e.target.value)}/>
-            </label>
+            <Autocomplete
+                options={suggestions.map(player => player.name)}
+                inputValue={username}
+                onInputChange={(event, newInputValue) => {
+                    setUsername(newInputValue);
+                }}
+                onChange={(event, selectedValue) => {
+                    setUsername(selectedValue || '');
+                }}
+                renderInput={(params) => (
+                    <TextField {...params} label="Player Username" variant="outlined" />
+                )}
+            />
             <button type="submit">Search</button>
         </Form>
+
     );
 }

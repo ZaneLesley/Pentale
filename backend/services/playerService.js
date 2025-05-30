@@ -49,3 +49,27 @@ exports.getPlayerData = async (username) => {
 exports.getPlayerImagePath = (imagePath) => {
     return path.join(__dirname, '../prisma', imagePath)
 }
+
+exports.getSuggestions = async (username) => {
+    try {
+        return await prisma.player.findMany({
+            where: {
+                name: {
+                    startsWith: username,
+                    mode: 'insensitive'
+                }
+            },
+            take: 10,
+            orderBy: {
+                name: 'asc'
+            },
+            select: {
+                id: true,
+                name: true
+            }
+        });
+    } catch (error) {
+        console.error("Error getting Suggestions:", error);
+        throw error;
+    }
+}

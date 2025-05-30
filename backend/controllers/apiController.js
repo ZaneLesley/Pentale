@@ -1,4 +1,5 @@
 const playerService = require('../services/playerService');
+const suggestionService = require("./apiController");
 
 exports.getRandomPlayerByDate = async (req, res) => {
     try {
@@ -45,6 +46,21 @@ exports.getPlayerImage = async (req, res) => {
         const file = playerService.getPlayerImagePath(imagePath)
         res.sendFile(file);
 
+    } catch (err) {
+        res.status(500).json({error: `${err}`});
+    }
+}
+
+exports.getSuggestions = async (req, res) => {
+    try {
+        const {username} = req.body;
+
+        if (!username) {
+            return res.status(400).json({error: "Username is required"});
+        }
+
+        const suggestions = await playerService.getSuggestions(username);
+        return res.json(suggestions);
     } catch (err) {
         res.status(500).json({error: `${err}`});
     }

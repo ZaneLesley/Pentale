@@ -10,6 +10,7 @@ const apiController = require('../controllers/apiController')
 apiRouter.post("/player", apiController.getPlayerData)
 apiRouter.post("/player/image", apiController.getPlayerImage)
 apiRouter.post("/player/random", apiController.getRandomPlayerByDate)
+apiRouter.post("/player/suggestions", apiController.getSuggestions)
 
 
 module.exports = apiRouter;

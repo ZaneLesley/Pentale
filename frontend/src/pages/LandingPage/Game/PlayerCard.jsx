@@ -13,9 +13,10 @@ export default function PlayerCard({playerData}) {
 
         loadImage();
     }, [playerData.image]);
+
     return (
         <div>
-            {image && <img src={image} alt={playerData.name} />}
+            <img src={image} alt={`${playerData.name} headshot`} />
             <div>{playerData.name}</div>
             <div>Kills: {playerData.kills}</div>
             <div>Deaths: {playerData.deaths}</div>

@@ -7,7 +7,7 @@ exports.fetchPlayerPerSplitData = async (playerId) => {
             playerId: playerId,
         },
         orderBy: {
-            date: "asc"
+            date: "desc"
         },
         select: {
             teamId: true,

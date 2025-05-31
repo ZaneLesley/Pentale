@@ -1,14 +1,17 @@
 const playerService = require('../services/playerService');
 const playerPerSplitService = require('../services/playerPerSplitService')
+const teamService = require('../services/teamService');
 
 exports.getRandomPlayerByDate = async (req, res) => {
     try {
         const {year} = req.body;
         const player = await playerService.fetchRandomPlayerByDate(year);
         const playerPerSplit = await playerPerSplitService.fetchPlayerPerSplitData(player[0].id)
+        const team = await teamService.fetchTeam(playerPerSplit.teamId)
         const randomPlayer = {
             ...player[0],
-            playerPerSplit: playerPerSplit
+            playerPerSplit: playerPerSplit,
+            team: team,
         };
 
         if (!randomPlayer) {

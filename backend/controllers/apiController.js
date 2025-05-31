@@ -1,16 +1,21 @@
 const playerService = require('../services/playerService');
-const suggestionService = require("./apiController");
+const playerPerSplitService = require('../services/playerPerSplitService')
 
 exports.getRandomPlayerByDate = async (req, res) => {
     try {
         const {year} = req.body;
-        const randomPlayer = await playerService.fetchRandomPlayerByDate(year);
+        const player = await playerService.fetchRandomPlayerByDate(year);
+        const playerPerSplit = await playerPerSplitService.fetchPlayerPerSplitData(player[0].id)
+        const randomPlayer = {
+            ...player[0],
+            playerPerSplit: playerPerSplit
+        };
 
         if (!randomPlayer) {
             return res.status(400).json({error: res.statusText});
         }
 
-        return res.json(randomPlayer);
+        return res.json([randomPlayer]);
     } catch (error) {
         res.status(500).json({error: `${error}`});
     }

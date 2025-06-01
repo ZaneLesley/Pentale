@@ -39,8 +39,7 @@ exports.fetchPlayerData = async (username) => {
     return prisma.player.findFirst({
         where: {
             name: {
-                equals: username,
-                mode: "insensitive"
+                equals: username
             }
         }
     });

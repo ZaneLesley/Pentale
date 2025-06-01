@@ -24,18 +24,22 @@ players = []
 for league in leagues:
     time.sleep(3)
     for player_tournament_results in site.cargo_client.query(
-            tables="Tournaments=T, TournamentPlayers=TP",
-            fields="T.Name, TP.OverviewPage, TP.Team, TP.Player, TP.Role, TP.Flag, TP.Link, T.Date",
+            tables="Tournaments=T, TournamentPlayers=TP, PlayerRedirects=PR, Players=P",
+            fields="T.Name, TP.OverviewPage, TP.Team, TP.Player, TP.Role, TP.Flag, TP.Link, T.Date, PR.OverviewPage=PlayerPage",
             where=f"T.League = '{league}'"
                   "AND TP.Role != 'Coach'"
                   "AND T.TournamentLevel='Primary' "
                   "AND T.IsQualifier='No'",
-            join_on="T.OverviewPage=TP.OverviewPage",
+            join_on="T.OverviewPage=TP.OverviewPage, TP.Player=PR.AllName, PR.OverviewPage=P.OverviewPage",
     ):
-
         team_name = player_tournament_results["Team"]
         event_name = player_tournament_results["OverviewPage"]
-        player_name = player_tournament_results["Player"]
+        player_name = player_tournament_results["PlayerPage"]
+
+        if not player_name:
+            # If the OverviewPage for the player doesn't exist, use the Tournament Players name instead
+            player_tournament_results["PlayerPage"] = player_tournament_results["Player"]
+            player_name = player_tournament_results["PlayerPage"]
 
         if player_name not in players:
             players.append(player_name)

@@ -1,14 +1,20 @@
 import {fetchPlayerImage} from '../../../api/player';
+import {fetchTeamImage} from '../../../api/team';
 import {useState, useEffect} from "react";
+
+import styles from "./PlayerCard.module.css"
 
 export default function PlayerCard({playerData}) {
     const [wins, losses] = playerData.record.split("-");
-    const [image, setImage] = useState(null);
-
+    const [playerImage, setPlayerImage] = useState(null);
+    const [teamImage, setTeamImage] = useState(null);
     useEffect(() => {
         async function loadImage() {
-            const img = await fetchPlayerImage(playerData.image);
-            setImage(img);
+            let img = await fetchPlayerImage(playerData.image);
+            setPlayerImage(img);
+            console.log(playerData['team'].image)
+            img = await fetchTeamImage(playerData['team'].image);
+            setTeamImage(img)
         }
 
         loadImage();
@@ -16,7 +22,7 @@ export default function PlayerCard({playerData}) {
 
     return (
         <div>
-            <img src={image} alt={`${playerData.name} headshot`} />
+            <img src={playerImage} alt={`${playerData.name} headshot`} />
             <div>{playerData.name}</div>
             <div>Kills: {playerData.kills}</div>
             <div>Deaths: {playerData.deaths}</div>
@@ -24,6 +30,7 @@ export default function PlayerCard({playerData}) {
             <div>CS/M: {playerData.cspm}</div>
             <div>Wins: {wins}</div>
             <div>losses: {losses}</div>
+            <img src={teamImage} alt={`${playerData['team'].image} logo`}/>
         </div>
     );
 }

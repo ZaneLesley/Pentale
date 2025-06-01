@@ -1,4 +1,5 @@
 const {PrismaClient} = require("../generated/prisma");
+const path = require("path");
 const prisma = new PrismaClient();
 
 exports.fetchTeam = async (teamId) => {
@@ -14,3 +15,7 @@ exports.fetchTeam = async (teamId) => {
         }
     })
 };
+
+exports.fetchTeamImagePath = (imagePath) => {
+    return path.join(__dirname, '../prisma', imagePath)
+}

@@ -33,10 +33,17 @@ exports.getPlayerData = async (req, res) => {
         }
 
         const player = await playerService.fetchPlayerData(username)
-        if (!player) {
+        const playerPerSplit = await playerPerSplitService.fetchPlayerPerSplitData(player.id)
+        const team = await teamService.fetchTeam(playerPerSplit.teamId)
+        const data = {
+            ...player,
+            playerPerSplit: playerPerSplit,
+            team: team,
+        };
+        if (!data) {
             return res.status(404).json({error: "Player not found"})
         }
-        return res.json(player);
+        return res.json(data);
 
     } catch (e) {
         res.status(500).json({error: `${e}`});
@@ -69,6 +76,22 @@ exports.getSuggestions = async (req, res) => {
 
         const suggestions = await playerService.fetchSuggestions(username);
         return res.json(suggestions);
+    } catch (err) {
+        res.status(500).json({error: `${err}`});
+    }
+}
+
+exports.getTeamImage = async (req, res) => {
+    try {
+        const {imagePath} = req.body
+
+        if (!imagePath) {
+            return res.status(400).json({error: "Image path is required"});
+        }
+
+        const file = teamService.fetchTeamImagePath(imagePath)
+        res.sendFile(file);
+
     } catch (err) {
         res.status(500).json({error: `${err}`});
     }

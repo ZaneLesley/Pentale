@@ -12,5 +12,6 @@ apiRouter.post("/player/image", apiController.getPlayerImage)
 apiRouter.post("/player/random", apiController.getRandomPlayerByDate)
 apiRouter.post("/player/suggestions", apiController.getSuggestions)
 
+apiRouter.post("/team/image", apiController.getTeamImage)
 
 module.exports = apiRouter;

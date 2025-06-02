@@ -1,7 +1,7 @@
 import {Form} from "react-router-dom";
 import {useState, useEffect} from "react";
 
-import { Autocomplete, TextField } from '@mui/material';
+import {Autocomplete, TextField} from '@mui/material';
 
 import {fetchPlayerData, fetchSuggestions} from "../../../api/player";
 
@@ -32,11 +32,11 @@ export default function GameForm({onPlayerFound}) {
                     console.error('Suggestion fetch failed:', err);
                     setSuggestions([]);
                 }
-            // Resets if empty
+                // Resets if empty
             } else {
                 setSuggestions([]);
             }
-        }, 300);
+        }, 200);
 
         return () => clearTimeout(delay);
     }, [username]);
@@ -54,10 +54,25 @@ export default function GameForm({onPlayerFound}) {
                     setUsername(selectedValue || '');
                 }}
                 renderInput={(params) => (
-                    <TextField {...params} label="Player Username" variant="outlined" />
+                    <TextField
+                        {...params}
+                        label="Player Username"
+                        variant="outlined"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                const match = suggestions.find(player =>
+                                    player.name.toLowerCase().startsWith(username.toLowerCase()));
+                                if (match && match.name !== username) {
+                                    setUsername(match.name);
+                                    e.preventDefault()
+                                }
+                            }
+                        }}/>
                 )}
             />
-            <button type="submit">Search</button>
+            <button type="submit" disabled={!suggestions.some(player => player.name === username)}>
+                Search
+            </button>
         </Form>
 
     );

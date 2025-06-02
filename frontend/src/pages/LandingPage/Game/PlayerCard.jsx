@@ -5,7 +5,6 @@ import {useState, useEffect} from "react";
 import styles from "./PlayerCard.module.css"
 
 export default function PlayerCard({playerData}) {
-    const [wins, losses] = playerData.record.split("-");
     const [playerImage, setPlayerImage] = useState(null);
     const [teamImage, setTeamImage] = useState(null);
     useEffect(() => {
@@ -28,8 +27,8 @@ export default function PlayerCard({playerData}) {
             <div>Deaths: {playerData.deaths}</div>
             <div>Assists: {playerData.assists}</div>
             <div>CS/M: {playerData.cspm}</div>
-            <div>Wins: {wins}</div>
-            <div>losses: {losses}</div>
+            <div>Wins: {playerData.wins}</div>
+            <div>losses: {playerData.losses}</div>
             <img src={teamImage} alt={`${playerData['team'].image} logo`}/>
         </div>
     );

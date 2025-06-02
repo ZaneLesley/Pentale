@@ -43,21 +43,6 @@ function analyzePlayerGuess(player, correctPlayer) {
         return;
     }
 
-    const [playerWins, playerLosses] = player.record.split("-").map(s => parseInt(s.trim(), 10));
-    const [correctPlayerWins, correctPlayerLosses] = correctPlayer.record.split("-").map(s => parseInt(s.trim(), 10));
-
-    const playerStats = {
-        ...player,
-        wins: playerWins,
-        losses: playerLosses
-    };
-
-    const correctStats = {
-        ...correctPlayer,
-        wins: correctPlayerWins,
-        losses: correctPlayerLosses
-    };
-
     const comparisons = [
         {key: "kills", label: "kills"},
         {key: "deaths", label: "deaths"},
@@ -68,7 +53,7 @@ function analyzePlayerGuess(player, correctPlayer) {
     ];
 
     comparisons.forEach(({key, label}) => {
-        if (playerStats[key] > correctStats[key]) {
+        if (player[key] > correctPlayer[key]) {
             console.log(`Guess has less ${label}`);
         }
     });

@@ -13,6 +13,13 @@ export default function GameForm({onPlayerFound}) {
         e.preventDefault();
         const data = await fetchPlayerData(username);
 
+        const isValid = suggestions.some(player => player.name === username);
+
+        if (!isValid) {
+            console.warn(`Player ${username} not found`);
+            return;
+        }
+
         if (!data) {
             setUsername('');
             return;
@@ -36,7 +43,7 @@ export default function GameForm({onPlayerFound}) {
             } else {
                 setSuggestions([]);
             }
-        }, 200);
+        }, 100);
 
         return () => clearTimeout(delay);
     }, [username]);
@@ -64,15 +71,13 @@ export default function GameForm({onPlayerFound}) {
                                     player.name.toLowerCase().startsWith(username.toLowerCase()));
                                 if (match && match.name !== username) {
                                     setUsername(match.name);
-                                    e.preventDefault()
+                                    e.preventDefault();
                                 }
                             }
                         }}/>
                 )}
             />
-            <button type="submit" disabled={!suggestions.some(player => player.name === username)}>
-                Search
-            </button>
+            <button type="submit">Search</button>
         </Form>
 
     );

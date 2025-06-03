@@ -10,6 +10,7 @@ exports.fetchPlayerPerSplitData = async (playerId) => {
             date: "desc"
         },
         select: {
+            id: true,
             teamId: true,
             role: true,
             flag: true,

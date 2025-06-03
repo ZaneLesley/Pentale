@@ -315,3 +315,4 @@ dist
 /backend/generated/prisma
 /backend/prisma/*.json
 /backend/python/temp_data.json
+/backend/test.http

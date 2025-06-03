@@ -1,26 +1,30 @@
 import GameForm from './GameForm';
 import PlayerCard from './PlayerCard';
 
-import {useState, useEffect} from 'react';
-import {fetchRandomPlayer} from "../../../api/player";
+import {useEffect, useState} from 'react';
+import {analyzeGuess, generateGame} from "../../../api/game";
 
 export default function Game() {
     const [players, setPlayers] = useState([]);
-    const [correctGuess, setCorrectGuess] = useState(null);
 
     useEffect(() => {
-        async function loadPlayer() {
-            const player = await fetchRandomPlayer();
-            setCorrectGuess(player);
+        async function startGame() {
+            await generateGame();
         }
 
-        loadPlayer();
+        startGame();
     }, []);
 
     useEffect(() => {
-        if (players.length === 0 || !correctGuess) return;
-        analyzePlayerGuess(players[players.length - 1], correctGuess[0]);
-    }, [players, correctGuess]);
+        if (players.length === 0) return;
+
+        async function onPlayerUpdate() {
+            const res = await analyzeGuess(players[players.length - 1]);
+            console.log(res);
+        }
+
+        onPlayerUpdate();
+    }, [players]);
     return (
         <>
             <h1>Pentale</h1>
@@ -34,27 +38,4 @@ export default function Game() {
             ))}
         </>
     );
-}
-
-function analyzePlayerGuess(player, correctPlayer) {
-    console.log(player, correctPlayer);
-    if (player.id === correctPlayer.id) {
-        console.log("You Win!");
-        return;
-    }
-
-    const comparisons = [
-        {key: "kills", label: "kills"},
-        {key: "deaths", label: "deaths"},
-        {key: "assists", label: "assists"},
-        {key: "cspm", label: "cspm"},
-        {key: "wins", label: "wins"},
-        {key: "losses", label: "losses"}
-    ];
-
-    comparisons.forEach(({key, label}) => {
-        if (player[key] > correctPlayer[key]) {
-            console.log(`Guess has less ${label}`);
-        }
-    });
 }

@@ -1,5 +1,5 @@
 import {Form} from "react-router-dom";
-import {useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 
 import {Autocomplete, TextField} from '@mui/material';
 
@@ -12,7 +12,7 @@ export default function GameForm({onPlayerFound}) {
     async function handleSubmit(e) {
         e.preventDefault();
         const data = await fetchPlayerData(username);
-
+        console.log(data);
         const isValid = suggestions.some(player => player.name === username);
 
         if (!isValid) {

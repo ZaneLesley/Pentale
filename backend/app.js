@@ -8,22 +8,20 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Middleware
-app.locals.encodeURIComponenet = encodeURIComponent;
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true
 }));
 app.use(express.json());
 
-// Session Middleware
-app.use(session({
+const sessionMiddleware = (session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
-        secure: false,                          // Change if using HTTPS
+        secure: process.env.NODE_ENV === 'production',
         //httpOnly: true,
-        maxAge: 1000 * 60 * 60 * 24             // 24 hours
+        maxAge: 1000 * 60 * 60 * 24         // 1 hour
     }
 }));
 
@@ -34,15 +32,21 @@ app.use((req, res, next) => {
 });
 
 
-// Router Redirect
 app.get("/", (req, res) => {
-    res.redirect("/api");
+    res.send("Backend API is running. Use /api or /game endpoints.");
+});
+
+app.post("/", (req, res) => {
+    res.send("Backend API is running. Use /api or /game endpoints.");
 });
 
 
 // Routers
 const apiRouter = require('../backend/routes/apiRouter');
 app.use("/api", apiRouter);
+
+const gameRouter = require('../backend/routes/gameRouter');
+app.use("/game", sessionMiddleware, gameRouter);
 
 
 app.listen(PORT, () => {

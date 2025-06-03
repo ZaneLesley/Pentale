@@ -1,18 +1,11 @@
 const playerService = require('../services/playerService');
-const playerPerSplitService = require('../services/playerPerSplitService')
+const playerPerSplitService = require('../services/playerPerSplitService');
 const teamService = require('../services/teamService');
 
 exports.getRandomPlayerByDate = async (req, res) => {
     try {
         const {year} = req.body;
-        const player = await playerService.fetchRandomPlayerByDate(year);
-        const playerPerSplit = await playerPerSplitService.fetchPlayerPerSplitData(player[0].id)
-        const team = await teamService.fetchTeam(playerPerSplit.teamId)
-        const randomPlayer = {
-            ...player[0],
-            playerPerSplit: playerPerSplit,
-            team: team,
-        };
+        const randomPlayer = await playerService.fetchPlayerFullData(year);
 
         if (!randomPlayer) {
             return res.status(400).json({error: res.statusText});
@@ -32,16 +25,16 @@ exports.getPlayerData = async (req, res) => {
             return res.status(400).json({error: "Username is required"});
         }
 
-        const player = await playerService.fetchPlayerData(username)
-        const playerPerSplit = await playerPerSplitService.fetchPlayerPerSplitData(player.id)
-        const team = await teamService.fetchTeam(playerPerSplit.teamId)
+        const player = await playerService.fetchPlayerData(username);
+        const playerPerSplit = await playerPerSplitService.fetchPlayerPerSplitData(player.id);
+        const team = await teamService.fetchTeam(playerPerSplit.teamId);
         const data = {
             ...player,
             playerPerSplit: playerPerSplit,
             team: team,
         };
         if (!data) {
-            return res.status(404).json({error: "Player not found"})
+            return res.status(404).json({error: "Player not found"});
         }
         return res.json(data);
 
@@ -52,19 +45,19 @@ exports.getPlayerData = async (req, res) => {
 
 exports.getPlayerImage = async (req, res) => {
     try {
-        const {imagePath} = req.body
+        const {imagePath} = req.body;
 
         if (!imagePath) {
             return res.status(400).json({error: "Image path is required"});
         }
 
-        const file = playerService.fetchPlayerImagePath(imagePath)
+        const file = playerService.fetchPlayerImagePath(imagePath);
         res.sendFile(file);
 
     } catch (err) {
         res.status(500).json({error: `${err}`});
     }
-}
+};
 
 exports.getSuggestions = async (req, res) => {
     try {
@@ -79,20 +72,20 @@ exports.getSuggestions = async (req, res) => {
     } catch (err) {
         res.status(500).json({error: `${err}`});
     }
-}
+};
 
 exports.getTeamImage = async (req, res) => {
     try {
-        const {imagePath} = req.body
+        const {imagePath} = req.body;
 
         if (!imagePath) {
             return res.status(400).json({error: "Image path is required"});
         }
 
-        const file = teamService.fetchTeamImagePath(imagePath)
+        const file = teamService.fetchTeamImagePath(imagePath);
         res.sendFile(file);
 
     } catch (err) {
         res.status(500).json({error: `${err}`});
     }
-}
+};

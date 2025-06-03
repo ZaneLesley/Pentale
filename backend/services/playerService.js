@@ -2,6 +2,8 @@ const {PrismaClient} = require("../generated/prisma");
 const prisma = new PrismaClient();
 const path = require("path");
 
+const playerPerSplitService = require('../services/playerPerSplitService');
+const teamService = require('../services/teamService');
 
 exports.fetchRandomPlayerByDate = async (date = '2024') => {
     try {
@@ -35,6 +37,21 @@ exports.fetchRandomPlayerByDate = async (date = '2024') => {
     }
 };
 
+exports.fetchPlayerFullData = async (year) => {
+    try {
+        const player = await exports.fetchRandomPlayerByDate(year);
+        const playerPerSplit = await playerPerSplitService.fetchPlayerPerSplitData(player[0].id);
+        const team = await teamService.fetchTeam(playerPerSplit.teamId);
+        return {
+            ...player[0],
+            playerPerSplit: playerPerSplit,
+            team: team,
+        };
+    } catch (e) {
+        console.error(e);
+    }
+};
+
 exports.fetchPlayerData = async (username) => {
     return prisma.player.findFirst({
         where: {
@@ -45,9 +62,34 @@ exports.fetchPlayerData = async (username) => {
     });
 };
 
+exports.fetchPlayerByPerSplitId = async (perSplitId) => {
+    try {
+        const playerPerSplit = await prisma.playerPerSplit.findUnique({
+            where: {
+                id: perSplitId,
+            }
+        });
+        const player = await prisma.player.findUnique({
+            where: {
+                id: playerPerSplit.playerId
+            }
+        });
+        const team = await teamService.fetchTeam(playerPerSplit.teamId);
+        return {
+            player: {
+                ...player,
+                playerPerSplit,
+                team
+            }
+        };
+    } catch (e) {
+        console.error(e);
+    }
+};
+
 exports.fetchPlayerImagePath = (imagePath) => {
-    return path.join(__dirname, '../prisma', imagePath)
-}
+    return path.join(__dirname, '../prisma', imagePath);
+};
 
 exports.fetchSuggestions = async (username) => {
     try {
@@ -71,4 +113,4 @@ exports.fetchSuggestions = async (username) => {
         console.error("Error getting Suggestions:", error);
         throw error;
     }
-}
+};

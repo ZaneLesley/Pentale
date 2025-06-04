@@ -1,5 +1,4 @@
 const playerService = require("../services/playerService");
-const playerPerSplitService = require("../services/playerPerSplitService");
 const gameService = require("../services/gameService");
 
 exports.generateGame = async (req, res) => {
@@ -40,7 +39,9 @@ exports.analyzePlayerGuess = async (req, res) => {
     player.cspm = parseFloat(player.cspm);
     correctPlayer.cspm = parseFloat(correctPlayer.cspm);
 
-    const result = gameService.analyzeGuess(player, correctPlayer);
+    const result = gameService.analyzeGuess(player, correctPlayer, req.session.numGuesses);
+    req.session.numGuesses += 1;
+    console.log(correctPlayer);
     console.log(result);
     res.json(result);
 };

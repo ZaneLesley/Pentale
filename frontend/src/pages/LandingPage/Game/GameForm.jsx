@@ -12,7 +12,6 @@ export default function GameForm({onPlayerFound}) {
     async function handleSubmit(e) {
         e.preventDefault();
         const data = await fetchPlayerData(username);
-        console.log(data);
         const isValid = suggestions.some(player => player.name === username);
 
         if (!isValid) {
@@ -29,6 +28,7 @@ export default function GameForm({onPlayerFound}) {
         setUsername('');
     }
 
+    // useEffect for getting suggestions
     useEffect(() => {
         const delay = setTimeout(async () => {
             if (username.length >= 2) {

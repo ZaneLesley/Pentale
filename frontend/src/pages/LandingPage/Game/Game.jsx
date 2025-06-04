@@ -8,6 +8,7 @@ import {fetchTeamImage} from '../../../api/team';
 export default function Game() {
     const [players, setPlayers] = useState([]);
 
+    // useEffect for starting the game
     useEffect(() => {
         async function startGame() {
             await generateGame();
@@ -16,6 +17,7 @@ export default function Game() {
         startGame();
     }, []);
 
+    // useEffect for analyzing the game state after the guess from the player
     useEffect(() => {
         if (players.length === 0) return;
 

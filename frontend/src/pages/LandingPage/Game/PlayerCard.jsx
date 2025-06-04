@@ -2,7 +2,6 @@ import {fetchPlayerImage} from '../../../api/player';
 import {fetchTeamImage} from '../../../api/team';
 import {useEffect, useState} from "react";
 
-// noinspection ES6UnusedImports
 import styles from "./PlayerCard.module.css";
 
 export default function PlayerCard({playerData}) {
@@ -22,7 +21,7 @@ export default function PlayerCard({playerData}) {
 
     return (
         <div>
-            <img src={playerImage} alt={`${playerData.name} headshot`}/>
+            <img className={styles.image} src={playerImage} alt={`${playerData.name} headshot`}/>
             <div>{playerData.name}</div>
             <div>Kills: {playerData.kills}</div>
             <div>Deaths: {playerData.deaths}</div>
@@ -31,7 +30,7 @@ export default function PlayerCard({playerData}) {
             <div>Wins: {playerData.wins}</div>
             <div>losses: {playerData.losses}</div>
             <div>Role: {playerData.playerPerSplit.role}</div>
-            <img src={teamImage} alt={`${playerData['team'].image} logo`}/>
+            <img className={styles.image} src={teamImage} alt={`${playerData['team'].image} logo`}/>
             <div>League: {playerData.team.league}</div>
         </div>
     );

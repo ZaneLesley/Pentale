@@ -1,9 +1,10 @@
 exports.analyzeGuess = (player, correctPlayer) => {
     console.log(player);
     console.log(correctPlayer);
+    const result = {};
     if (player.id === correctPlayer.id) {
         console.log("You Win!");
-        return;
+        return result;
     }
 
     const comparisons = [
@@ -15,7 +16,6 @@ exports.analyzeGuess = (player, correctPlayer) => {
         {key: "losses"}
     ];
 
-    const result = {};
 
     comparisons.forEach(({key}) => {
         if (player[key] > correctPlayer[key]) {

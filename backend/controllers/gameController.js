@@ -41,5 +41,6 @@ exports.analyzePlayerGuess = async (req, res) => {
     correctPlayer.cspm = parseFloat(correctPlayer.cspm);
 
     const result = gameService.analyzeGuess(player, correctPlayer);
+    console.log(result);
     res.json(result);
 };

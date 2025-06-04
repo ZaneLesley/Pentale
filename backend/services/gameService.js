@@ -54,7 +54,6 @@ exports.analyzeGuess = (player, correctPlayer, numGuesses) => {
 
     if (numGuesses + 1 >= 5 && result.status !== "win") {
         result["status"] = "lose";
-        return result;
     }
 
     return result;

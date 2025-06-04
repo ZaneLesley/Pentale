@@ -17,29 +17,21 @@ export default function Game() {
         startGame();
     }, []);
 
-    // useEffect for analyzing the game state after the guess from the player
-    useEffect(() => {
-        if (players.length === 0) return;
-
-        async function onPlayerUpdate() {
-            const res = await analyzeGuess(players[players.length - 1]);
-            console.log(res);
-        }
-
-        onPlayerUpdate();
-    }, [players]);
-
     async function handlePlayerFound(newPlayer) {
-        const [playerImage, teamImage] = await Promise.all([
+        const [playerImage, teamImage, state] = await Promise.all([
             fetchPlayerImage(newPlayer.image),
-            fetchTeamImage(newPlayer.team.image)
+            fetchTeamImage(newPlayer.team.image),
+            analyzeGuess(newPlayer)
         ]);
 
         const enrichedPlayer = {
             ...newPlayer,
             playerImage,
-            teamImage
+            teamImage,
+            state,
         };
+
+        console.log(enrichedPlayer);
 
         setPlayers((prev) => [...prev, enrichedPlayer].slice(0, 5));
     }

@@ -4,6 +4,7 @@ const {PrismaClient} = require('../generated/prisma');
 
 const prisma = new PrismaClient();
 
+//TODO: Fix CSPM Stat, make CS and Gamelength a stat
 async function main() {
     // await runStatsFile();
 

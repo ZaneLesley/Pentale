@@ -12,9 +12,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    min-width: 8rem;
+    min-height: 6rem;
     border: 2px solid red;
     border-radius: 5px;
     padding: 0.5rem;
+}
+
+.wrong {
+    background-color: red;
+}
+
+.lower {
+    background-color: orange;
+}
+
+.higher {
+    background-color: pink;
+}
+
+.correct {
+    background-color: green;
 }

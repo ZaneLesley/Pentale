@@ -32,6 +32,7 @@ exports.fetchGameStatus = (req, res) => {
     }
 };
 
+//TODO: Add validators to the req.body requests
 exports.analyzePlayerGuess = async (req, res) => {
     console.log("Session ID:", req.sessionID);
     const {player} = req.body;
@@ -39,6 +40,7 @@ exports.analyzePlayerGuess = async (req, res) => {
     player.cspm = parseFloat(player.cspm);
     correctPlayer.cspm = parseFloat(correctPlayer.cspm);
 
+    //TODO: Look to move numGuesses into analyze Guess
     const result = gameService.analyzeGuess(player, correctPlayer, req.session.numGuesses);
     req.session.numGuesses += 1;
     console.log(correctPlayer);

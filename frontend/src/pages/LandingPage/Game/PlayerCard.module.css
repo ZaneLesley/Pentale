@@ -2,8 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    margin: 1rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    width: 100%;
 }
 
 .card,
@@ -12,17 +13,33 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 8rem;
-    min-width: 8rem;
-    min-height: 6rem;
+    max-width: 6.5rem;
+    max-height: 6.5rem;
+    min-width: 6.5rem;
+    min-height: 6.5rem;
     border: 2px solid white;
     border-radius: 5px;
-    padding: 0.5rem;
+    padding: 0.1rem;
+    object-fit: contain;
     perspective: 1000px;
+
+    margin-right: 0.2rem;
+    margin-left: 0.2rem;
+}
+
+.card-text {
+    max-width: 100%;
+    text-align: center;
+    font-size: clamp(1rem, 1.6rem, 2rem);  /* min, preferred, max */
+    font-weight: bold;
+    text-overflow: clip;
+}
+
+.image {
 }
 
 .wrong {
-    background-color: red;
+    background-color: lightcoral;
 }
 
 .lower {

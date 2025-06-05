@@ -1,9 +1,8 @@
 import {Form} from "react-router-dom";
 import {useEffect, useState} from "react";
-
 import {Autocomplete, TextField} from '@mui/material';
-
 import {fetchPlayerData, fetchSuggestions} from "../../../api/player";
+import styles from "./GameForm.module.css";
 
 export default function GameForm({onPlayerFound}) {
     const [username, setUsername] = useState('');
@@ -24,7 +23,7 @@ export default function GameForm({onPlayerFound}) {
             return;
         }
 
-        setSuggestions([])
+        setSuggestions([]);
         setUsername('');
         onPlayerFound(data);
     }
@@ -51,36 +50,40 @@ export default function GameForm({onPlayerFound}) {
 
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Autocomplete
-                options={suggestions.map(player => player.name)}
-                inputValue={username}
-                filterOptions={(x) => x}
-                onInputChange={(event, newInputValue) => {
-                    setUsername(newInputValue);
-                }}
-                onChange={(event, selectedValue) => {
-                    setUsername(selectedValue || '');
-                }}
-                renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        label="Player Username"
-                        variant="outlined"
-                        onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                                const match = suggestions.find(player =>
-                                    player.name.toLowerCase().startsWith(username.toLowerCase()));
-                                if (match && match.name !== username) {
-                                    setUsername(match.name);
-                                    e.preventDefault();
-                                }
-                            }
-                        }}/>
-                )}
-            />
-            <button type="submit">Search</button>
-        </Form>
-
+            <Form className={styles.container} onSubmit={handleSubmit}>
+                    <Autocomplete
+                        sx={{width: '50%'}}
+                        options={suggestions.map(player => player.name)}
+                        inputValue={username}
+                        filterOptions={(x) => x}
+                        onInputChange={(event, newInputValue) => {
+                            setUsername(newInputValue);
+                        }}
+                        onChange={(event, selectedValue) => {
+                            setUsername(selectedValue || '');
+                        }}
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                sx={{
+                                    input: {color: 'white'},
+                                    label: {color: 'rgba(255, 255, 255, 0.5)'},
+                                }}
+                                label="Player Username..."
+                                variant="outlined"
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        const match = suggestions.find(player =>
+                                            player.name.toLowerCase().startsWith(username.toLowerCase()));
+                                        if (match && match.name !== username) {
+                                            setUsername(match.name);
+                                            e.preventDefault();
+                                        }
+                                    }
+                                }}/>
+                        )}
+                    />
+                    <button type="submit">Search</button>
+            </Form>
     );
 }

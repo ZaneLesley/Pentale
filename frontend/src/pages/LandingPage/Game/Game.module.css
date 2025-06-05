@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-top: 2px black solid;
+    border-bottom: 2px black solid;
+}
+
+.button {
+    min-width: 8rem;
+    height: auto;
+    margin-top: 0.4rem;
+}

@@ -5,6 +5,7 @@ import {useEffect, useState} from 'react';
 import {analyzeGuess, generateGame} from "../../../api/game";
 import {fetchPlayerImage} from '../../../api/player';
 import {fetchTeamImage} from '../../../api/team';
+import styles from './Game.module.css';
 
 export default function Game() {
     const [players, setPlayers] = useState([]);
@@ -48,18 +49,22 @@ export default function Game() {
 
     return (
         <>
-            {showModal && players.length > 0 &&
-                <WinModal setPlayers={setPlayers}
-                          state={players[players.length - 1].state}
-                          setShowModal={setShowModal}
-                ></WinModal>}
-            <GameForm
-                onPlayerFound={handlePlayerFound}
-            />
-            {players.map((player, i) => (
-                <PlayerCard key={i} playerData={player}/>
-            ))}
-            <button onClick={startGame}>New Game</button>
+            <div className={styles.container}>
+                <div style={{width:'100%'}}>
+                    {showModal && players.length > 0 &&
+                        <WinModal setPlayers={setPlayers}
+                                  state={players[players.length - 1].state}
+                                  setShowModal={setShowModal}
+                        ></WinModal>}
+                    <GameForm
+                        onPlayerFound={handlePlayerFound}
+                    />
+                    {players.map((player, i) => (
+                        <PlayerCard key={i} playerData={player}/>
+                    ))}
+                </div>
+                <button className={styles.button} onClick={startGame}>New Game</button>
+            </div>
         </>
     );
 }

@@ -53,7 +53,7 @@ export default function PlayerCard({playerData}) {
                 variants={cardVariants}
                 transition={{ duration: duration }}
             >
-                <div>{playerData.kills}</div>
+                <div className={styles["card-text"]}>{playerData.kills}</div>
                 <div>Kills</div>
             </motion.div>
 
@@ -62,7 +62,7 @@ export default function PlayerCard({playerData}) {
                 variants={cardVariants}
                 transition={{ duration: duration }}
             >
-                <div>{playerData.deaths}</div>
+                <div className={styles["card-text"]}>{playerData.deaths}</div>
                 <div>Deaths</div>
             </motion.div>
 
@@ -71,7 +71,7 @@ export default function PlayerCard({playerData}) {
                 variants={cardVariants}
                 transition={{ duration: duration }}
             >
-                <div>{playerData.assists}</div>
+                <div className={styles["card-text"]}>{playerData.assists}</div>
                 <div>Assists</div>
             </motion.div>
 
@@ -80,7 +80,7 @@ export default function PlayerCard({playerData}) {
                 variants={cardVariants}
                 transition={{ duration: duration }}
             >
-                <div>{playerData.cspm}</div>
+                <div className={styles["card-text"]}>{playerData.cspm}</div>
                 <div>CS/M</div>
             </motion.div>
 
@@ -89,7 +89,7 @@ export default function PlayerCard({playerData}) {
                 variants={cardVariants}
                 transition={{ duration: duration }}
             >
-                <div>{playerData.wins}</div>
+                <div className={styles["card-text"]}>{playerData.wins}</div>
                 <div>Wins</div>
             </motion.div>
 
@@ -98,7 +98,7 @@ export default function PlayerCard({playerData}) {
                 variants={cardVariants}
                 transition={{ duration: duration }}
             >
-                <div>{playerData.losses}</div>
+                <div className={styles["card-text"]}>{playerData.losses}</div>
                 <div>Losses</div>
             </motion.div>
 
@@ -107,7 +107,7 @@ export default function PlayerCard({playerData}) {
                 variants={cardVariants}
                 transition={{ duration: duration }}
             >
-                <div>{playerData.playerPerSplit.role}</div>
+                <div className={styles["card-text"]}>{playerData.playerPerSplit.role}</div>
                 <div>Role</div>
             </motion.div>
 
@@ -116,7 +116,7 @@ export default function PlayerCard({playerData}) {
                 variants={cardVariants}
                 transition={{ duration: duration }}
             >
-                <div>{abbreviations[playerData.team.league]}</div>
+                <div className={styles["card-text"]}>{abbreviations[playerData.team.league]}</div>
                 <div>League</div>
             </motion.div>
 

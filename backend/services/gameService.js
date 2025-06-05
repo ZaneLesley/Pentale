@@ -20,8 +20,8 @@ exports.analyzeGuess = (player, correctPlayer, numGuesses) => {
     const status = {
         "wrong": 0,        // Wrong
         "lower": 1,        // Lower
-        "higher": 2,        // Higher
-        "correct": 3,        // Correct
+        "higher": 2,       // Higher
+        "correct": 3,      // Correct
     };
 
     numericalComparisons.forEach(({key}) => {
@@ -46,6 +46,7 @@ exports.analyzeGuess = (player, correctPlayer, numGuesses) => {
         result["team"] = status["wrong"];
     }
 
+    //TODO: Check to see if team.league CONTAINS that, abbrev can have multiple
     if (player.team.league === correctPlayer.team.league) {
         result["league"] = status["correct"];
     } else {

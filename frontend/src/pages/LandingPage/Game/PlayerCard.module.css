@@ -15,9 +15,10 @@
     width: 8rem;
     min-width: 8rem;
     min-height: 6rem;
-    border: 2px solid red;
+    border: 2px solid white;
     border-radius: 5px;
     padding: 0.5rem;
+    perspective: 1000px;
 }
 
 .wrong {

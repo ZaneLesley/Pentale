@@ -1,4 +1,5 @@
 import styles from "./PlayerCard.module.css";
+import {motion} from "framer-motion";
 
 export default function PlayerCard({playerData}) {
     const abbreviations = {
@@ -26,46 +27,106 @@ export default function PlayerCard({playerData}) {
         "lose": styles.wrong
     };
 
-    return (
-        <div className={styles.container}>
-            <img className={`${styles.image} ${statusCssMap[playerData.state.status]}`} src={playerData.playerImage}
-                 alt={`${playerData.name} headshot`}/>
+    const cardVariants = {
+        hidden: { rotateY: 90, opacity: 0 },
+        visible: { rotateY: 0, opacity: 1 },
+    };
+    const duration = 0.5;
 
-            <div className={`${styles.card} ${statusCssMap[playerData.state.kills]}`}>
+    return (
+        <motion.div
+            className={styles.container}
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+            initial="hidden"
+            animate="visible"
+        >
+            <motion.img
+                className={`${styles.image} ${statusCssMap[playerData.state.status]}`}
+                src={playerData.playerImage}
+                alt={`${playerData.name} headshot`}
+                variants={cardVariants}
+                transition={{ duration: duration }}
+            />
+
+            <motion.div
+                className={`${styles.card} ${statusCssMap[playerData.state.kills]}`}
+                variants={cardVariants}
+                transition={{ duration: duration }}
+            >
                 <div>{playerData.kills}</div>
                 <div>Kills</div>
-            </div>
-            <div className={`${styles.card} ${statusCssMap[playerData.state.deaths]}`}>
+            </motion.div>
+
+            <motion.div
+                className={`${styles.card} ${statusCssMap[playerData.state.deaths]}`}
+                variants={cardVariants}
+                transition={{ duration: duration }}
+            >
                 <div>{playerData.deaths}</div>
                 <div>Deaths</div>
-            </div>
-            <div className={`${styles.card} ${statusCssMap[playerData.state.assists]}`}>
+            </motion.div>
+
+            <motion.div
+                className={`${styles.card} ${statusCssMap[playerData.state.assists]}`}
+                variants={cardVariants}
+                transition={{ duration: duration }}
+            >
                 <div>{playerData.assists}</div>
                 <div>Assists</div>
-            </div>
-            <div className={`${styles.card} ${statusCssMap[playerData.state.cspm]}`}>
+            </motion.div>
+
+            <motion.div
+                className={`${styles.card} ${statusCssMap[playerData.state.cspm]}`}
+                variants={cardVariants}
+                transition={{ duration: duration }}
+            >
                 <div>{playerData.cspm}</div>
                 <div>CS/M</div>
-            </div>
-            <div className={`${styles.card} ${statusCssMap[playerData.state.wins]}`}>
+            </motion.div>
+
+            <motion.div
+                className={`${styles.card} ${statusCssMap[playerData.state.wins]}`}
+                variants={cardVariants}
+                transition={{ duration: duration }}
+            >
                 <div>{playerData.wins}</div>
                 <div>Wins</div>
-            </div>
-            <div className={`${styles.card} ${statusCssMap[playerData.state.losses]}`}>
+            </motion.div>
+
+            <motion.div
+                className={`${styles.card} ${statusCssMap[playerData.state.losses]}`}
+                variants={cardVariants}
+                transition={{ duration: duration }}
+            >
                 <div>{playerData.losses}</div>
                 <div>Losses</div>
-            </div>
-            <div className={`${styles.card} ${statusCssMap[playerData.state.role]}`}>
+            </motion.div>
+
+            <motion.div
+                className={`${styles.card} ${statusCssMap[playerData.state.role]}`}
+                variants={cardVariants}
+                transition={{ duration: duration }}
+            >
                 <div>{playerData.playerPerSplit.role}</div>
                 <div>Role</div>
-            </div>
-            <div className={`${styles.card} ${statusCssMap[playerData.state.league]}`}>
+            </motion.div>
+
+            <motion.div
+                className={`${styles.card} ${statusCssMap[playerData.state.league]}`}
+                variants={cardVariants}
+                transition={{ duration: duration }}
+            >
                 <div>{abbreviations[playerData.team.league]}</div>
                 <div>League</div>
-            </div>
+            </motion.div>
 
-            <img className={`${styles.image} ${statusCssMap[playerData.state.team]}`}  src={playerData.teamImage} alt={`${playerData.team.image} logo`}/>
-        </div>
-
+            <motion.img
+                className={`${styles.image} ${statusCssMap[playerData.state.team]}`}
+                src={playerData.teamImage}
+                alt={`${playerData.team.image} logo`}
+                variants={cardVariants}
+                transition={{ duration: duration }}
+            />
+        </motion.div>
     );
 }

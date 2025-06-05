@@ -24,14 +24,15 @@ export default function GameForm({onPlayerFound}) {
             return;
         }
 
-        onPlayerFound(data);
+        setSuggestions([])
         setUsername('');
+        onPlayerFound(data);
     }
 
     // useEffect for getting suggestions
     useEffect(() => {
         const delay = setTimeout(async () => {
-            if (username.length >= 2) {
+            if (username.length >= 1) {
                 try {
                     const data = await fetchSuggestions(username);
                     setSuggestions(data || []);
@@ -54,6 +55,7 @@ export default function GameForm({onPlayerFound}) {
             <Autocomplete
                 options={suggestions.map(player => player.name)}
                 inputValue={username}
+                filterOptions={(x) => x}
                 onInputChange={(event, newInputValue) => {
                     setUsername(newInputValue);
                 }}

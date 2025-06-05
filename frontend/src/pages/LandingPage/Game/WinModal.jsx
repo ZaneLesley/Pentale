@@ -9,6 +9,7 @@ export default function WinModal({setPlayers, state, setShowModal}) {
         setOpen(false);
     };
 
+    //TODO: Review this and try to make the code more logically, right now the game is starting in 2 places
     const handleNewGame = async() => {
         await generateGame();
         setPlayers([])

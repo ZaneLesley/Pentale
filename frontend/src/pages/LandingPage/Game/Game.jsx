@@ -53,7 +53,6 @@ export default function Game() {
                           state={players[players.length - 1].state}
                           setShowModal={setShowModal}
                 ></WinModal>}
-            <h1>Pentale</h1>
             <GameForm
                 onPlayerFound={handlePlayerFound}
             />

@@ -34,7 +34,7 @@ The backend was built with [Express.js](https://expressjs.com/). and serves both
 Routing is split between:
 
 - `apiController.js` - Handles all `/api` endpoints
-- `gameController.js` - handles all game-specific state logic via `\game` endpoints
+- `gameController.js` - handles all game-specific state logic via `/game` endpoints
 
 Sessions are tracked using cookies to manage ongoing games and prevent tampering.
 

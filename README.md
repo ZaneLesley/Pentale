@@ -66,6 +66,8 @@ files into Prisma also proved much easier once the structure was consistent.
 The backend was relatively straightforward. I implemented middleware for session tracking and kept the API minimal.
 Although all user input is controlled through the frontend, I plan to add stricter backend validation for peace of mind.
 
+### Frontend Design
+
 React was my weakest area when I started this project. Through this experience, I gained a much deeper understanding of
 hooks like `useState`, `useEffect`, and how component lifecycles work. I also became more confident structuring larger
 React projects and using external libraries—especially Motion.

@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Player" ADD COLUMN     "cs" INTEGER DEFAULT 0,
+ADD COLUMN     "gameLength" DECIMAL(65,30) DEFAULT 0;

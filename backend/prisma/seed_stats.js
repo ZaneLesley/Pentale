@@ -6,14 +6,14 @@ const prisma = new PrismaClient();
 
 //TODO: Fix CSPM Stat, make CS and Gamelength a stat
 async function main() {
-    // await runStatsFile();
+    await runStatsFile();
 
     const data = JSON.parse(fs.readFileSync('temp_player_stats.json', 'utf8'));
 
     try {
         for (const row of data) {
             for (const [player, stats] of Object.entries(row)) {
-                const cspm = stats["Gamelength Number"] === 0 ? 0 : Math.round((stats.CS / stats["Gamelength Number"]) * 10) / 10;
+                // const cspm = stats["Gamelength Number"] === 0 ? 0 : Math.round((stats.CS / stats["Gamelength Number"]) * 10) / 10;
                 const playerRecord = await prisma.player.findFirst({
                     where: {
                         // This is the link attribute, need to compare it to the playerId and update it there
@@ -42,18 +42,39 @@ async function main() {
                             deaths: {
                                 increment: stats.Deaths
                             },
-                            cspm: {
-                                increment: cspm
+                            cs: {
+                                increment: stats.CS
                             },
-                            wins : {
+                            gameLength: {
+                                increment: stats['Gamelength Number'],
+                            },
+                            wins: {
                                 increment: stats.Win
                             },
-                            losses : {
+                            losses: {
                                 increment: stats.Loss
                             }
                         }
                     });
                 }
+                // Updated CSPM based on the data inside the database (fixes incrementing cspm)
+                const statsUpdateRecord = await prisma.player.findUnique({
+                    where: {
+                        id: playerRecord.id
+                    },
+                    select: {
+                        cs: true,
+                        gameLength: true
+                    }
+                });
+                await prisma.player.update({
+                    where: {
+                        id: playerRecord.id
+                    },
+                    data: {
+                        cspm: statsUpdateRecord.gameLength === 0 ? 0 : Math.round((statsUpdateRecord.cs / statsUpdateRecord.gameLength) * 10) / 10,
+                    }
+                });
             }
         }
     } catch (error) {

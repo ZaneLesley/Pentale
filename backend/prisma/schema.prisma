@@ -31,6 +31,8 @@ model Player {
   deaths         Int?             @default(0)
   assists        Int?             @default(0)
   cspm           Decimal?         @default(0) @db.Decimal(10, 1)
+  cs             Int?             @default(0)
+  gameLength     Decimal?         @default(0)
   wins           Int?             @default(0)
   losses         Int?             @default(0)
   image          String?

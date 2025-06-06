@@ -50,7 +50,7 @@ export default function Game() {
     return (
         <>
             <div className={styles.container}>
-                <div style={{width:'100%'}}>
+                <div className={styles["game-container"]}>
                     {showModal && players.length > 0 &&
                         <WinModal setPlayers={setPlayers}
                                   state={players[players.length - 1].state}

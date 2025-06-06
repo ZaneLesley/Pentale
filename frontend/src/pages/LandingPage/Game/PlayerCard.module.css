@@ -5,6 +5,8 @@
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
     width: 100%;
+    flex: 1 1 0;
+    gap: calc(2vw)
 }
 
 .card,
@@ -13,18 +15,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 6.5rem;
     max-height: 6.5rem;
     min-width: 6.5rem;
     min-height: 6.5rem;
-    border: 2px solid white;
+    border: 1.5px solid var(--gray);
+    aspect-ratio: 1 / 1; /* ensures a square shape */
     border-radius: 5px;
     padding: 0.1rem;
     object-fit: contain;
     perspective: 1000px;
-
-    margin-right: 0.2rem;
-    margin-left: 0.2rem;
+    flex: 1 1 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    box-shadow: 4px 4px 15px 0 rgba(0,0,0,0.8);
 }
 
 .card-text {
@@ -39,17 +42,17 @@
 }
 
 .wrong {
-    background-color: lightcoral;
+    background-color: var(--gray-transparent);
 }
 
 .lower {
-    background-color: orange;
+    background-color: var(--yellow);
 }
 
 .higher {
-    background-color: pink;
+    background-color: var(--orange);
 }
 
 .correct {
-    background-color: green;
+    background-color: var(--green);
 }

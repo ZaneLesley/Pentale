@@ -3,6 +3,9 @@
     flex-direction: column;
     width: 100%;
     height: auto;
+    background-color: var(--black);
+    border-bottom: 0.1rem solid var(--gray);
+    padding-bottom: 1rem;
 }
 
 .container > h1 {

@@ -4,12 +4,17 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    width: 80%;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding: 1rem;
-    border-top: 2px black solid;
-    border-bottom: 2px black solid;
+    width: 95%;
+    margin-top: 1rem;
+    margin-bottom: 1em;
+}
+
+.game-container {
+    width: 100%;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .button {

@@ -4,7 +4,6 @@ const {PrismaClient} = require('../generated/prisma');
 
 const prisma = new PrismaClient();
 
-//TODO: Fix CSPM Stat, make CS and Gamelength a stat
 async function main() {
     await runStatsFile();
 
@@ -13,7 +12,6 @@ async function main() {
     try {
         for (const row of data) {
             for (const [player, stats] of Object.entries(row)) {
-                // const cspm = stats["Gamelength Number"] === 0 ? 0 : Math.round((stats.CS / stats["Gamelength Number"]) * 10) / 10;
                 const playerRecord = await prisma.player.findFirst({
                     where: {
                         // This is the link attribute, need to compare it to the playerId and update it there

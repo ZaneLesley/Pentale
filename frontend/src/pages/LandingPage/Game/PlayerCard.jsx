@@ -123,7 +123,7 @@ export default function PlayerCard({playerData}) {
             <motion.img
                 className={`${styles.image} ${statusCssMap[playerData.state.team]}`}
                 src={playerData.teamImage}
-                alt={`${playerData.team.image} logo`}
+                alt={`${playerData.team.name}`}
                 variants={cardVariants}
                 transition={{ duration: duration }}
             />

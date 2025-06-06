@@ -43,7 +43,7 @@ exports.analyzePlayerGuess = async (req, res) => {
     //TODO: Look to move numGuesses into analyze Guess
     const result = gameService.analyzeGuess(player, correctPlayer, req.session.numGuesses);
     req.session.numGuesses += 1;
-    console.log(correctPlayer);
-    console.log(result);
+    console.log("Guess: ", player)
+    console.log("Correct Player: ", correctPlayer);
     res.json(result);
 };

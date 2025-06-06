@@ -47,12 +47,11 @@ exports.analyzeGuess = (player, correctPlayer, numGuesses) => {
     }
 
     //TODO: Check to see if team.league CONTAINS that, abbrev can have multiple
-    if (player.team.league === correctPlayer.team.league) {
+    if ((player.team.league) === correctPlayer.team.league) {
         result["league"] = status["correct"];
     } else {
         result["league"] = status["wrong"];
     }
-
     if (numGuesses + 1 >= 5 && result.status !== "win") {
         result["status"] = "lose";
     }

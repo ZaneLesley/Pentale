@@ -1,0 +1,12 @@
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: var(--ebony);
+    border: 1.5px solid var(--gray);
+    border-radius: 5px;
+    box-shadow: 4px 4px 15px 0 rgba(0,0,0,0.8);
+    padding: 16px 32px 24px;
+}

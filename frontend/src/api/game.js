@@ -34,3 +34,21 @@ export async function analyzeGuess(player) {
         console.error(e);
     }
 }
+
+export async function fetchCorrectGuess() {
+    try {
+        const res = await fetch(`${import.meta.env.VITE_GAME_URL}/correct`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            credentials: 'include',
+        });
+
+        if (!res.ok) {
+            console.error(`Error: ${res.status}: ${res.statusText}`);
+        }
+
+        return await res.json();
+    } catch (e) {
+        console.error(e);
+    }
+}

@@ -9,6 +9,7 @@ const gameController = require('../controllers/gameController');
 gameRouter.post("/generate", gameController.generateGame);
 gameRouter.post("/status", gameController.fetchGameStatus);
 gameRouter.post("/analyze", gameController.analyzePlayerGuess);
+gameRouter.post("/correct", gameController.fetchCorrectPlayer)
 
 
 module.exports = gameRouter;

@@ -1,9 +1,10 @@
 import {Box, Modal} from "@mui/material";
-import {useState} from "react";
-import {generateGame} from "../../../api/game";
+import {useState, useEffect} from "react";
+import {fetchCorrectGuess, generateGame} from "../../../api/game";
 
 export default function WinModal({setPlayers, state, setShowModal}) {
     const [open, setOpen] = useState(true);
+    const [correctGuess, setCorrectGuess] = useState(null);
 
     const handleClose = () => {
         setOpen(false);
@@ -16,6 +17,17 @@ export default function WinModal({setPlayers, state, setShowModal}) {
         setShowModal(false)
         setOpen(false)
     }
+
+
+    useEffect(() => {
+        const fetchGuess = async () => {
+            const { player } = await fetchCorrectGuess();
+            setCorrectGuess(player);
+        };
+
+        fetchGuess();
+    }, []);
+
 
     const style = {
         position: 'absolute',
@@ -31,7 +43,6 @@ export default function WinModal({setPlayers, state, setShowModal}) {
         pb: 3,
     };
 
-    //TODO: Actually display who the correct guess was....
     return (
         <>
             <Modal
@@ -41,6 +52,7 @@ export default function WinModal({setPlayers, state, setShowModal}) {
                 <Box sx={{...style, width: 200}}>
                     <div>{`You ${state.status}!`}</div>
                     <div>{`Number of guesses: ${state.numGuesses}`}</div>
+                    <div>{correctGuess ? `Correct Guess: ${correctGuess}` : 'Loading...'}</div>
                     <button onClick={handleClose}>Close</button>
                     <button onClick={handleNewGame}>New Game</button>
                 </Box>

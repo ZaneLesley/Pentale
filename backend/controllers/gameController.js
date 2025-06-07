@@ -43,7 +43,12 @@ exports.analyzePlayerGuess = async (req, res) => {
     //TODO: Look to move numGuesses into analyze Guess
     const result = gameService.analyzeGuess(player, correctPlayer, req.session.numGuesses);
     req.session.numGuesses += 1;
-    console.log("Guess: ", player)
+    console.log("Guess: ", player);
     console.log("Correct Player: ", correctPlayer);
     res.json(result);
+};
+
+exports.fetchCorrectPlayer = async (req, res) => {
+    const {player: correctPlayer} = await playerService.fetchPlayerByPerSplitId(req.session.playerPerSplitId);
+    res.json({player: correctPlayer.name});
 };

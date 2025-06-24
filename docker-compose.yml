@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:8080/api
+        VITE_GAME_URL: http://localhost:8080/game
+        VITE_ROOT_URL: /
+    working_dir: /app
+    command: ["npm", "run", "build"]
+    volumes:
+      - ./frontend/dist:/app/dist
+
+  backend:
+    build: ./backend
+    working_dir: /app
+    entrypoint: ["true"]  # don't run anything
+

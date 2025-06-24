@@ -14,7 +14,7 @@ services:
   backend:
     build: ./backend
     environment:
-      DATABASE_URL: postgres://user:password@host.docker.internal:5432/pentale
+      DATABASE_URL: postgresql://user:password@host.docker.internal:5432/Pentale?schema=public
     command: |
       sh -c "npm install &&
       npx prisma generate &&

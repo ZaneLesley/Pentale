@@ -93,12 +93,11 @@ Build frontend:
 ```bash
 cd /path/to/Pentale/frontend
 npm install
+
 # Create the .env file (use .env.production for production builds)
-cat <<EOF > .env
-VITE_API_URL=http://localhost:8080/api
-VITE_GAME_URL=http://localhost:8080/game
-VITE_ROOT_URL=/
-EOF
+cat .env.example
+vim .env
+
 # Start development server
 npm run dev
 
@@ -113,10 +112,8 @@ cd /path/to/Pentale/backend
 npm install
 
 # Create the .env file
-cat <<EOF > .env
-DATABASE_URL="postgresql://user@localhost:5432/db_name?schema=public"
-SECRET="$(openssl rand -base64 32)"
-EOF
+cat .env.example
+vim .env
 
 cd /path/to/Pentale/backend/python/scraper
 pip install -r requirements.txt
@@ -135,23 +132,12 @@ cd /path/to/pentale/backend/prisma
 npx prisma migrate dev
 npx prisma db generate
 
+```shell
 # Seed the database, please do these one at a time, does take a significant amount of time due to rate limits
 npx prisma db seed -- players
-```
-
-```shell
 # npx prisma db seed -- teams
-```
-
-```shell
 # npx prisma db seed -- team_images
-```
-
-```shell
 # npx prisma db seed -- player_images
-```
-
-```shell
 # npx prisma db seed -- stats
 ```
 

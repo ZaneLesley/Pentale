@@ -1,5 +1,8 @@
 # Dockerfile
 FROM node:20-alpine
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    apt-get clean
 
 # Create app directory inside the container
 WORKDIR /app

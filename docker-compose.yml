@@ -17,7 +17,6 @@ services:
       DATABASE_URL: postgres://user:password@host.docker.internal:5432/pentale
     command: |
       sh -c "npm install &&
-      pip install -r python/scraper/requirements.txt &&
       npx prisma generate &&
       npx prisma db push &&
       npx prisma db seed -- players"

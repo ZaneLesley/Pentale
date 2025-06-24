@@ -10,7 +10,7 @@ COPY . .
 
 RUN python3 -m venv /app/python/scraper/env && \
     . /app/python/scraper/env/bin/activate && \
-    pip install --no-cache-dir -r /app/python/scraper/requirements.txt \
+    pip install --no-cache-dir -r /app/python/scraper/requirements.txt
 
 RUN npm install
 

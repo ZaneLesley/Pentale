@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   frontend:
     build:
@@ -15,25 +14,38 @@ services:
   backend:
     build: ./backend
     environment:
-      DATABASE_URL: "postgres://zane@host.docker.internal:5432/Pentale?schema=public&sslmode=disable"
+      DATABASE_URL: "postgresql://zane@db:5432/Pentale?schema=public"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     command: |
       sh -c "npm install &&
       npx prisma generate &&
-      npx prisma db push &&
-      node app.js"
+      npx prisma db push"
     volumes:
       - ./backend:/app
     working_dir: /app
-    networks:
-      - my_docker_network  # ✅ attach to custom network
     ports:
-      - "8080:8080"
+      - "8002:8080"
 
-networks:
-  my_docker_network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.99.0.0/16
+# Use postgres/example user/password credentials
+  db:
+    image: postgres
+    restart: always
+    # set shared memory limit when using docker compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
+    environment:
+      POSTGRES_DB: Pentale
+      POSTGRES_USER: zane
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8001:8080"

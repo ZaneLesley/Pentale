@@ -7,6 +7,8 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+console.log(process.env.DATABASE_URL)
+
 // Middleware
 app.use(cors({
     origin: 'http://localhost:5173',
@@ -42,10 +44,10 @@ app.post("/", (req, res) => {
 
 
 // Routers
-const apiRouter = require('../backend/routes/apiRouter');
+const apiRouter = require('./routes/apiRouter');
 app.use("/api", apiRouter);
 
-const gameRouter = require('../backend/routes/gameRouter');
+const gameRouter = require('./routes/gameRouter');
 app.use("/game", sessionMiddleware, gameRouter);
 
 

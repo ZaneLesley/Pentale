@@ -7,25 +7,29 @@ services:
         VITE_GAME_URL: http://localhost:8080/game
         VITE_ROOT_URL: /
     working_dir: /app
-    command: ["npm", "run", "build"]
+    command:
+      ["npm", "run", "dev"]
     volumes:
       - ./frontend/dist:/app/dist
+    ports:
+      - "5173:5173"
 
   backend:
     build: ./backend
     environment:
       DATABASE_URL: "postgresql://zane@db:5432/Pentale?schema=public"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     command: |
       sh -c "npm install &&
       npx prisma generate &&
-      npx prisma db push"
+      npx prisma db push &&
+      node app.js"
     volumes:
       - ./backend:/app
     working_dir: /app
+    depends_on:
+      - db
     ports:
-      - "8002:8080"
+      - "8080:8080"
 
 # Use postgres/example user/password credentials
   db:
@@ -43,6 +47,8 @@ services:
       POSTGRES_DB: Pentale
       POSTGRES_USER: zane
       POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
 
   adminer:
     image: adminer

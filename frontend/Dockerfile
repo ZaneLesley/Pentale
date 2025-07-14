@@ -22,8 +22,5 @@ COPY . .
 # Build
 RUN npm run build
 
-# Optional: expose port (not needed for static build)
-# EXPOSE 3000
-
 # This image ends here — build artifacts are in /app/dist
 CMD ["echo", "Build complete. Use NGINX or another server to serve /app/dist"]

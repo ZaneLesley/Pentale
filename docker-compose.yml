@@ -3,14 +3,12 @@ services:
     build:
       context: ./frontend
       args:
-        VITE_API_URL: http://localhost:8080/api
-        VITE_GAME_URL: http://localhost:8080/game
-        VITE_ROOT_URL: /
+        VITE_API_URL: /backend/api
+        VITE_GAME_URL: /backend/game
+        VITE_ROOT_URL: /pentale
     working_dir: /app
     volumes:
       - ./frontend/dist:/app/dist
-    ports:
-      - "5173:5173"
 
   backend:
     build: ./backend
@@ -48,8 +46,3 @@ services:
     volumes:
       - ./db/init:/docker-entrypoint-initdb.d
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "8001:8080"

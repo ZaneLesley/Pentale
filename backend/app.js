@@ -50,7 +50,6 @@ app.use("/api", apiRouter);
 const gameRouter = require('./routes/gameRouter');
 app.use("/game", sessionMiddleware, gameRouter);
 
-
-app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}!`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`App running on port ${PORT}!`);
 });

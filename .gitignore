@@ -316,3 +316,4 @@ dist
 /backend/prisma/*.json
 /backend/python/temp_data.json
 /backend/test.http
+/db/init/dump.sql

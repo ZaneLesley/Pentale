@@ -43,6 +43,8 @@ jobs:
       - name: Start services
         run: docker-compose -f docker-compose.yml up -d
 
+      - name: Backend logs
+        run: docker-compose logs backend
 
       - name: Wait for backend to be ready
         run: |
@@ -51,12 +53,11 @@ jobs:
             echo "Waiting for backend... retrying in 3s"
             sleep 3
           done
+          docker-compose logs backend
 
       - name: Test Health
         run: curl -v http://localhost:4000
 
-      - name: Backend logs
-        run: docker-compose logs backend
 
       - name: Run Jest tests
         run: docker-compose -f docker-compose.yml exec backend npm test

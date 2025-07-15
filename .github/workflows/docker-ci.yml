@@ -41,6 +41,8 @@ jobs:
         run: docker-compose -f docker-compose.yml build
 
       - name: Start services
+        env:
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         run: docker-compose -f docker-compose.yml up -d
 
       - name: Backend logs
@@ -61,10 +63,6 @@ jobs:
           echo "❌ Backend failed to start. Printing logs:"
           docker-compose logs backend
           exit 1
-
-      - name: Test Health
-        run: curl -v http://localhost:4000
-
 
       - name: Run Jest tests
         run: docker-compose -f docker-compose.yml exec backend npm test

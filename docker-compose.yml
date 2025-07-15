@@ -13,7 +13,7 @@ services:
   backend:
     build: ./backend
     environment:
-      DATABASE_URL: "postgresql://zane@db:5432/Pentale?schema=public"
+      DATABASE_URL: postgresql://zane:${POSTGRES_PASSWORD}@db:5432/Pentale?schema=public
     command: |
       sh -c "npm install &&
       npx prisma generate &&

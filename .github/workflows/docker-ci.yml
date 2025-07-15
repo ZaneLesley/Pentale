@@ -37,6 +37,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install docker-compose -y
 
+      - name: Generate backend .env
+        run: |
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> backend/.env
+          echo "SECRET=${{ secrets.SECRET }}" >> backend/.env
+          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> backend/.env
+
+
       - name: Build containers
         run: docker-compose -f docker-compose.yml build
 

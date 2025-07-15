@@ -5,7 +5,8 @@ require('dotenv').config();
 
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const prisma = require("./prismaClient");
+app.locals.prisma = prisma;
 
 console.log(process.env.DATABASE_URL)
 
@@ -49,9 +50,5 @@ app.use("/api", apiRouter);
 
 const gameRouter = require('./routes/gameRouter');
 app.use("/game", sessionMiddleware, gameRouter);
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`App running on port ${PORT}!`);
-});
 
 module.exports = app;

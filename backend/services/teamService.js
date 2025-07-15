@@ -1,6 +1,5 @@
-const {PrismaClient} = require("../generated/prisma");
 const path = require("path");
-const prisma = new PrismaClient();
+const prisma = require("../prismaClient.js");
 
 exports.fetchTeam = async (teamId) => {
     return prisma.team.findUnique({

@@ -65,9 +65,7 @@ jobs:
           exit 1
 
       - name: Run Jest tests
-        run: docker-compose -f docker-compose.yml run --rm backend sh -c "npx prisma generate && npm test --detectOpenHandles"
-
-
+        run: docker-compose --env-file .env run --rm backend sh -c "npx prisma generate && npm test --detectOpenHandles"
 
       - name: Tear down
         run: docker-compose -f docker-compose.yml down -v

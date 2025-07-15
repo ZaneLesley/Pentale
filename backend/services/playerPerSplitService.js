@@ -1,5 +1,4 @@
-const {PrismaClient} = require("../generated/prisma");
-const prisma = new PrismaClient()
+const prisma = require("../prismaClient.js");
 
 exports.fetchPlayerPerSplitData = async (playerId) => {
     return prisma.playerPerSplit.findFirst({

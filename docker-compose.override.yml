@@ -44,7 +44,7 @@ services:
     environment:
       POSTGRES_DB: Pentale
       POSTGRES_USER: zane
-      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_PASSWORD: shen
     volumes:
       - ./db/init:/docker-entrypoint-initdb.d
 

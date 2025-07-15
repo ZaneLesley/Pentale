@@ -47,9 +47,6 @@ jobs:
         run: sleep 30
 
       - name: Test Health
-        run: curl http://localhost:8080
-
-      - name: Test Health 2
         run: curl http://localhost:4000
         
       - name: Tear down

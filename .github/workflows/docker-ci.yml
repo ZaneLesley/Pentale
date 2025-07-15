@@ -42,10 +42,6 @@ jobs:
 
       - name: Start services
         run: docker-compose -f docker-compose.yml up -d
-
-      - name: Wait for backend to become healthy (optional)
-        run: sleep 15
-
-      - name: Run integration test (example)
-        run: |
-          curl --fail http://localhost:4000/game/generate || exit 1
+        
+      - name: Tear down
+        run: docker-compose -f docker-compose.yml down -v

@@ -52,9 +52,6 @@ jobs:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         run: docker-compose -f docker-compose.yml up -d
 
-      - name: Backend logs
-        run: docker-compose logs backend
-
       - name: Wait for backend to be ready
         run: |
           for i in {1..10}; do
@@ -72,7 +69,7 @@ jobs:
           exit 1
 
       - name: Run Jest tests
-        run: docker-compose --env-file .env run --rm backend sh -c "npx prisma generate && npm test --detectOpenHandles"
+        run: docker-compose run --rm backend npm test
 
       - name: Tear down
         run: docker-compose -f docker-compose.yml down -v

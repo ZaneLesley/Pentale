@@ -44,11 +44,19 @@ jobs:
         run: docker-compose -f docker-compose.yml up -d
 
 
-      - name: Wait for app to be ready
-        run:  sleep 10
+      - name: Wait for backend to be ready
+        run: |
+          for i in {1..10}; do
+            curl -v --fail http://localhost:4000 && break
+            echo "Waiting for backend... retrying in 3s"
+            sleep 3
+          done
 
       - name: Test Health
         run: curl -v http://localhost:4000
+
+      - name: Backend logs
+        run: docker-compose logs backend
 
       - name: Run Jest tests
         run: docker-compose -f docker-compose.yml exec backend npm test

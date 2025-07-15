@@ -48,8 +48,6 @@ jobs:
         run: docker-compose -f docker-compose.yml build
 
       - name: Start services
-        env:
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         run: docker-compose -f docker-compose.yml up -d
 
       - name: Wait for backend to be ready
@@ -64,7 +62,7 @@ jobs:
             sleep 3
           done
       
-          echo "❌ Backend failed to start. Printing logs:"
+          echo "Backend failed to start. Printing logs:"
           docker-compose logs backend
           exit 1
 

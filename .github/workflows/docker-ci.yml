@@ -65,8 +65,9 @@ jobs:
           exit 1
 
       - name: Run Jest tests
-        run: docker-compose -f docker-compose.yml run --rm backend npm test
+        run: docker-compose -f docker-compose.yml run --rm backend sh -c "npx prisma generate && npm test"
 
-        
+
+
       - name: Tear down
         run: docker-compose -f docker-compose.yml down -v

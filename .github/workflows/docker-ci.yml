@@ -42,6 +42,9 @@ jobs:
 
       - name: Start services
         run: docker-compose -f docker-compose.yml up -d
+
+      - name: Test Health
+        run: curl http://localhost:8080
         
       - name: Tear down
         run: docker-compose -f docker-compose.yml down -v

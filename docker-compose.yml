@@ -46,7 +46,7 @@ services:
       sh -c "npm install &&
       npx prisma generate &&
       npx prisma db push &&
-      node server.js"
+      npm run dev"
     volumes:
       - ./backend:/app
     working_dir: /app

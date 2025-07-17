@@ -43,7 +43,6 @@ app.post("/", (req, res) => {
     res.send("Backend API is running. Use /api or /game endpoints.");
 });
 
-
 // Routers
 const apiRouter = require('./routes/apiRouter');
 app.use("/api", apiRouter);

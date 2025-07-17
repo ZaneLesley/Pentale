@@ -1,0 +1,25 @@
+{
+  "id": 541,
+  "name": "Faker",
+  "kills": 9210,
+  "deaths": 5722,
+  "assists": 14678,
+  "cspm": 8.9,
+  "cs": 405100,
+  "gameLength": "45708.53333333338",
+  "wins": 1816,
+  "losses": 892,
+  "image": "img/player/Faker.png",
+  "playerPerSplit": {
+    "id": 11888,
+    "teamId": 84,
+    "role": "Mid",
+    "flag": "South Korea"
+  },
+  "team": {
+    "name": "T1",
+    "league": "LoL Champions Korea",
+    "abbreviation": "LCK;MSI;EWC",
+    "image": "img/team/T1.png"
+  }
+}

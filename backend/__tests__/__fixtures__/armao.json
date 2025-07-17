@@ -1,0 +1,29 @@
+{
+  "id": 279,
+  "name": "Armao",
+  "kills": 470,
+  "deaths": 710,
+  "assists": 1684,
+  "cspm": 5.1,
+  "cs": 24596,
+  "gameLength": 4841.683333333336,
+  "wins": 128,
+  "losses": 160,
+  "image": "img/player/Armao.png",
+  "playerPerSplit": {
+    "id": 2208,
+    "playerId": 279,
+    "teamId": 39,
+    "role": "Jungle",
+    "flag": "United States",
+    "link": "Armao",
+    "event": "LCS/2024 Season/Summer Season",
+    "date": "2024-08-11T00:00:00.000Z"
+  },
+  "team": {
+    "name": "Immortals",
+    "league": "League of Legends Championship Series",
+    "abbreviation": "LCS;LCS;WCS",
+    "image": "img/team/Immortals.png"
+  }
+}

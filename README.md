@@ -79,6 +79,7 @@ React projects and using external libraries—especially Motion.
 - Python
 - Node
 - PostgreSQL
+- Docker
 
 ### Install
 
@@ -88,41 +89,9 @@ First, clone the project:
 git clone https://github.com/ZaneLesley/Pentale.git
 ````
 
-Build frontend:
-
-```bash
-cd /path/to/Pentale/frontend
-npm install
-
-# Create the .env file (use .env.production for production builds)
-cat .env.example
-vim .env
-
-# Start development server
-npm run dev
-
-# Or build for production
-# npm run build
-```
-
-Build backend:
+Build Database: 
 
 ```shell
-cd /path/to/Pentale/backend
-npm install
-
-# Create the .env file
-cat .env.example
-vim .env
-
-cd /path/to/Pentale/backend/python/scraper
-pip install -r requirements.txt
-```
-
-Next Setup the Database and Prisma
-
-```shell
-
 # Create the Pentale Datbase
 psql -U your_postgres_user
 CREATE DATABASE Pentale;
@@ -131,9 +100,12 @@ CREATE DATABASE Pentale;
 cd /path/to/pentale/backend/prisma
 npx prisma migrate dev
 npx prisma db generate
+```
 
 ```shell
 # Seed the database, please do these one at a time, does take a significant amount of time due to rate limits
+# You can also just use the pg_dump file already used in the repo, you will need to get team_images and
+# player_images
 npx prisma db seed -- players
 # npx prisma db seed -- teams
 # npx prisma db seed -- team_images
@@ -141,11 +113,16 @@ npx prisma db seed -- players
 # npx prisma db seed -- stats
 ```
 
-Run app.js with node:
+Build application:
 
-```shell
-cd /path/to/Pentale/backend
-node app.js
+```bash
+cd /path/to/Pentale
+
+# Create the .env files in frontend/backend (use .env.production for production builds)
+# Update or create a new pg_dump file if you want in db/init 
+
+# start server (--profile options = dev or build)
+docker-compose --profile prod up -d --build
 ```
 
 

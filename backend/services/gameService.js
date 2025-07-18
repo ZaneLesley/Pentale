@@ -17,6 +17,7 @@ exports.analyzeGuess = (player, correctPlayer, numGuesses) => {
         {key: "losses"}
     ];
 
+    // TODO: This should really change to be more readable, key should really be a value, not a number
     const status = {
         "wrong": 0,        // Wrong
         "lower": 1,        // Lower

@@ -5,6 +5,7 @@ const playerPerSplitService = require('../services/playerPerSplitService');
 const teamService = require('../services/teamService');
 
 exports.fetchRandomPlayerByDate = async (date = '2024') => {
+    // FIXME: What if there is no count for that date ?
     try {
         const count = await prisma.player.count({
             where: {
